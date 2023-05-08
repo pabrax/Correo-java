@@ -1,4 +1,4 @@
-package Main.listaSimple;
+package data_structures;
 
 import javax.swing.JOptionPane;
 

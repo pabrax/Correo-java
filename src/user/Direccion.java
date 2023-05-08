@@ -1,4 +1,4 @@
-package UserClass;
+package user;
 
 public class Direccion extends Usuario{
     
