@@ -1,7 +1,9 @@
+import user.Usuario;
+
 public class Administrador extends Empleado{
     
     public Administrador() {
-        
+        this.user = new Usuario();
     }
     
 

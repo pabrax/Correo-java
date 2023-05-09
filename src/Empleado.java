@@ -6,7 +6,8 @@ public class Empleado {
     protected BandejaEntrada bandeja;
 
     public Empleado() {
-        
+        this.user = new Usuario();
+        this.bandeja = new BandejaEntrada();
     }
 
     public void revisarBandeja(){

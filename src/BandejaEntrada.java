@@ -27,7 +27,7 @@ public class BandejaEntrada {
     }
 
     public void descartarMensaje(){
-
+        
     }
     
     public void enviarMensaje(){
