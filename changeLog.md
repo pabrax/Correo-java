@@ -1,6 +1,9 @@
 
 ### caracteristicas nuevas
 
+- en la clase Menu:
+  - se han añadido nuevos metodos por codear y se ha implementado el Import
+
 - se ha creado la carpeta mensajes (punto 10 del enunciado) para almacenar los mensajes (por implementar)
 
 

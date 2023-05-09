@@ -1,6 +1,8 @@
 import data_structures.*;
 import user.*;
 
+import java.io.*;
+
 
 public class BandejaEntrada {
     
@@ -33,7 +35,58 @@ public class BandejaEntrada {
     public void enviarMensaje(){
     }
 
+    public void guardarMensajes() {
 
+        String pathfile = (System.getProperty("user.dir") + "" + "" + "");
+
+
+
+        try {
+            FileWriter escritor = new FileWriter(
+                    new File(System.getProperty("user.dir") + "/src/DB/usuariosatendidos.txt"));
+            BufferedWriter buffer = new BufferedWriter(escritor);
+
+            while (!usuarioAtendido.isEmpty()) {
+                String elemento = usuarioAtendido.pop().toString();
+                buffer.write(elemento);
+                buffer.write("\n");
+            }
+            buffer.close();
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+
+        try {
+            FileWriter escritor = new FileWriter(
+                    new File(System.getProperty("user.dir") + "/src/DB/usuariosatendidos.txt"));
+            BufferedWriter buffer = new BufferedWriter(escritor);
+
+            while (!usuarioAtendido.isEmpty()) {
+                String elemento = usuarioAtendido.pop().toString();
+                buffer.write(elemento);
+                buffer.write("\n");
+            }
+            buffer.close();
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+
+        try {
+            FileWriter escritor = new FileWriter(
+                    new File(System.getProperty("user.dir") + "/src/DB/usuariosatendidos.txt"));
+            BufferedWriter buffer = new BufferedWriter(escritor);
+
+            while (!usuarioAtendido.isEmpty()) {
+                String elemento = usuarioAtendido.pop().toString();
+                buffer.write(elemento);
+                buffer.write("\n");
+            }
+            buffer.close();
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+        
+    }
 
 
 }

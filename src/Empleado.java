@@ -19,5 +19,13 @@ public class Empleado {
     public void VerBorradores(){
     }
 
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
     
 }
