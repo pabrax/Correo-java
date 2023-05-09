@@ -1,4 +1,10 @@
+import user.Usuario;
+
 public class Empleado {
+
+    protected Usuario user;
+    protected BandejaEntrada bandeja;
+
     public Empleado() {
         
     }
@@ -11,5 +17,6 @@ public class Empleado {
 
     public void VerBorradores(){
     }
+
     
 }

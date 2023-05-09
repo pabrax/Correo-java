@@ -4,8 +4,12 @@
 * loguea al usuario y muestra un menu de opciones respectivo para cada tipo de usuario
 */
 
+import javax.swing.JOptionPane;
+
 public class Login {
     public Login(){
         
     }
+
+    public void validarUsuario(){}
 }

@@ -1,10 +1,14 @@
-public class Administrador {
+public class Administrador extends Empleado{
+    
     public Administrador() {
         
     }
+    
 
     public void registrarUsuarios(){
+        
     }
+
     
     public void CambiarContrasena(){
     }
