@@ -11,13 +11,20 @@ public class Empleado {
     }
 
     public void revisarBandeja(){
+        while (bandeja.getNo_leidos() != null){
+            
+        }
     }
 
     public void verMensajesLeidos(){
+        
     }
 
     public void VerBorradores(){
     }
+
+
+    //*  gets y sets
 
     public Usuario getUser() {
         return user;

@@ -7,7 +7,7 @@
 import javax.swing.JOptionPane;
 import java.io.*;
 import user.*;
-import data_structures.List;
+import data_structures.*;
 
 public class Menu {
 
@@ -17,37 +17,59 @@ public class Menu {
         
     }
 
-    public void Login(){
-        Empleado e = new Empleado();
-        if (e.user.getId()== Buscar()) {// ? corregir linea; agregarel retorno de un metodo que lea el archivo de passwords.txt
-            e = new Administrador();
-            
-        }
-
-    }
-
     public void MenuEmpleado(){
-
+        // crear el menu para el empleado
     }
 
     public void MenuAdmin(){
-        
+        // crear el menu para el admin
     }
 
     public void toFile() {
         // toFIle para escribir los usuarios en los archivos de password y Empleados
     }
 
-    public Long Buscar() {
-        // se encarga de buscar un usuario y devolver
-        // try para buscar en el archivo
-        try {
-            
-        } catch (Exception e) {
-            
+    public Node Buscar(Long id) {
+
+        Node actual = listaUsuarios.First();
+        while (actual != null) {
+            Usuario u = (Usuario) actual.getDato();
+            if (u.getId() == id) {
+                return actual;
+            }
+            actual = actual.getNext();
         }
-        return 0l;
+        return null;
         
+    }
+
+    public void Login(){
+        JOptionPane jop = new JOptionPane();
+        Long id = Long.parseLong(jop.showInputDialog(null, "contraseña", "iniciar sesion", 0));
+
+        String LoginPassword = jop.showInputDialog(null, "Usuario", "iniciar sesion", 0);
+
+        File file = new File((System.getProperty("user.dir")+"/src/empleados/Password.txt"));
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(" ");
+                Long idUser = Long.parseLong(data[0]);
+                String passwd = data[1];
+                String tipoUsuario = data[2];
+                
+                if (id == idUser && LoginPassword.equals(passwd)){
+                    if (tipoUsuario.equals("administrador")) {
+                        MenuAdmin();
+                    } else {
+                        MenuEmpleado();
+                    }
+                } 
+            }
+        } catch (Exception e) {
+            System.out.println("error al leer las credenciales");
+        }
+
     }
 
     public void Import() {
