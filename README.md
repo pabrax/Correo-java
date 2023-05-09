@@ -2,7 +2,7 @@
 
 <br>
 
-
+en la seccion de [cambios](https://github.com/pxbr4x/Proyecto_final/blob/master/changeLog.md) se encuentran los cambios, novedades y implementaciones pendientes del sistema para desarrollar el proyecto 
 
 <br>
 
