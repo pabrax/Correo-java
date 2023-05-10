@@ -1,4 +1,4 @@
-import user.*;
+import userClass.*;
 
 public class mensaje {
     

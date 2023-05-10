@@ -1,5 +1,5 @@
 import data_structures.List;
-import user.Usuario;
+import userClass.Usuario;
 import data_structures.*;
 
 public class Administrador extends Empleado{
@@ -8,7 +8,6 @@ public class Administrador extends Empleado{
         this.user = new Usuario();
     }
     
-
     public void registrarUsuarios(Usuario u){
         Menu m = new Menu();
         List temp = new List();
@@ -16,8 +15,7 @@ public class Administrador extends Empleado{
         temp.addLast(u);
         m.setListaUsuarios(temp);
     }
-
-    
+   
     public void CambiarContrasena(){
         // Menu m = new Menu();
     }

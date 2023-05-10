@@ -1,7 +1,9 @@
 import data_structures.*;
-import user.*;
-
+import userClass.*;
+import java.time.LocalDate;
 import java.io.*;
+
+import javax.swing.JOptionPane;
 
 public class BandejaEntrada {
 
@@ -23,18 +25,17 @@ public class BandejaEntrada {
         this.user = new Usuario();
     }
 
-    public void redactarMensaje() {
-
-    }
-
+    
     public mensaje descartarMensaje() {
         return (mensaje) borrador.pop();
     }
 
-    public mensaje enviarMensaje(String nameUser) {
-        msg.setNameUser(nameUser);
-        
-        return msg;
+    public void enviarMensaje(Long destinatario) {
+        Menu m = new Menu();
+        List temp = m.getListaUsuarios(); 
+        while(temp != null){
+
+        }
 
     }
 
@@ -64,6 +65,23 @@ public class BandejaEntrada {
         this.borrador = borrador;
     }
 
+
+    public mensaje redactarMensaje() {
+        String titulo = JOptionPane.showInputDialog(null, "Titulo", "Nuevo Mensaje", 1);
+        
+        String contenido = JOptionPane.showInputDialog(null, "Mensaje", "Nuevo Mensaje", 1);
+
+        LocalDate fechaActual = LocalDate.now();
+        String temp = fechaActual.toString();
+        String[] newFecha =temp.split("-");
+
+        Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
+
+        String nameUser = user.getnombre(); 
+
+        msg = new mensaje(nameUser, titulo, contenido, f);
+        return msg;
+    }
     public void guardarMensajes() {
         
         // guarda los mensajes no leidos

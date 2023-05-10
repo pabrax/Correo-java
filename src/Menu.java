@@ -6,27 +6,74 @@
 
 import javax.swing.JOptionPane;
 import java.io.*;
-import user.*;
+
 import data_structures.*;
+import userClass.*;
 
 public class Menu {
 
     private List listaUsuarios;
     
     public Menu(){
+        this.listaUsuarios = new List();
+    }
+
+    
+    public static void main(String[] args) {
+        Menu m = new Menu();
+        m.Import();
+
+        // System.out.println(m.getListaUsuarios().First().getDato().toString());
+        m.Login();
         
     }
 
+    // sets y gets
+    
+    public List getListaUsuarios() {
+        return listaUsuarios;
+    }
+    
+    public void setListaUsuarios(List listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+
+    // metodos propios de la clase
+
     public void MenuEmpleado(){
         // crear el menu para el empleado
+        // bandeja entrada
+
+        System.out.println("menu Empleado");
+    }
+    
+    public void MenuAdmin(){
+        
+        // crear el menu para el admin
+        // bandeja de entrada
+        // herramientas de administrador
+
+        System.out.println("menu Admin");
     }
 
-    public void MenuAdmin(){
-        // crear el menu para el admin
-    }
+    // toFile para escribir los usuarios en los archivos de password y Empleados
 
     public void toFile() {
-        // toFIle para escribir los usuarios en los archivos de password y Empleados
+        try {
+            File file = new File((System.getProperty("user.dir")+"/src/empleados/Empleados.txt"));
+    
+            PrintWriter writer = new PrintWriter(file);
+            Node actual = listaUsuarios.First();
+            while (actual != null) {
+                Usuario u = (Usuario) actual.getDato();
+                writer.println(u.toString());
+                actual = actual.getNext();
+            }
+            writer.close();
+            
+        } catch (Exception e) {
+            System.out.println("Error al escribir el archivo");
+        }
     }
 
     public Node Buscar(Long id) {
@@ -40,14 +87,13 @@ public class Menu {
             actual = actual.getNext();
         }
         return null;
-        
     }
 
     public void Login(){
-        JOptionPane jop = new JOptionPane();
-        Long id = Long.parseLong(jop.showInputDialog(null, "contraseña", "iniciar sesion", 0));
 
-        String LoginPassword = jop.showInputDialog(null, "Usuario", "iniciar sesion", 0);
+        Long idLogin = Long.parseLong(JOptionPane.showInputDialog(null, "Usuario", "iniciar sesion", 1));
+
+        String LoginPassword = JOptionPane.showInputDialog(null, "Contraseña", "iniciar sesion", 1);
 
         File file = new File((System.getProperty("user.dir")+"/src/empleados/Password.txt"));
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -58,7 +104,9 @@ public class Menu {
                 String passwd = data[1];
                 String tipoUsuario = data[2];
                 
-                if (id == idUser && LoginPassword.equals(passwd)){
+                // ? implementar la seleccion del menu, si es admin o empleado
+
+                if (idLogin == idUser /*&& LoginPassword.equals(passwd)*/){
                     if (tipoUsuario.equals("administrador")) {
                         MenuAdmin();
                     } else {
@@ -103,15 +151,6 @@ public class Menu {
             System.out.println("Error al tratar de importar la informacion");
             e.printStackTrace();
         }
-        
-
     }
 
-    public List getListaUsuarios() {
-        return listaUsuarios;
-    }
-
-    public void setListaUsuarios(List listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
-    }
 }

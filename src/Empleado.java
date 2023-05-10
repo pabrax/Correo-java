@@ -1,4 +1,5 @@
-import user.Usuario;
+import data_structures.List;
+import userClass.Usuario;
 
 public class Empleado {
 
@@ -11,8 +12,12 @@ public class Empleado {
     }
 
     public void revisarBandeja(){
+        int i = 0;
+        List tempList = bandeja.getNo_leidos();
         while (bandeja.getNo_leidos() != null){
-            
+            mensaje msg = (mensaje) tempList.removeFirst();
+            System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
+            i++; 
         }
     }
 
