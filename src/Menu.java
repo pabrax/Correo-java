@@ -106,7 +106,7 @@ public class Menu {
                 
                 // ? implementar la seleccion del menu, si es admin o empleado
 
-                if (idLogin == idUser /*&& LoginPassword.equals(passwd)*/){
+                if (idLogin == idUser && LoginPassword.equals(passwd)){
                     if (tipoUsuario.equals("administrador")) {
                         MenuAdmin();
                     } else {
@@ -143,7 +143,10 @@ public class Menu {
                 String apto = data[13];
                 Direccion dir = new Direccion(calle, nomenclatura, barrio, ciudad, edificio, apto);
                 Usuario usuario = new Usuario(nombre, id, fecha, ciudadNacimiento, tel, email, dir);
-                listaUsuarios.addLast(usuario);
+                
+                Empleado e = new Empleado();
+                e.setUser(usuario);
+                listaUsuarios.addLast(e);
             }
             br.close();
             System.out.println("Se han importado los usuarios desde el archivo");

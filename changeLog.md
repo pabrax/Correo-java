@@ -1,6 +1,10 @@
 
 ### caracteristicas nuevas
 
+- se ha implementado la clase temporal test, sirve para revisar el correcto funcionamiento del programa
+
+- la listaEmpleados del Menu guardan correctamente los empleados y su usuario equivalente
+
 - Los usuarios del archivo Empleados se importan correctamente
 
 - en la clase Menu:
@@ -21,6 +25,8 @@
   - Stack
 
 ### por agregar/solucionar
+
+- el metoo revisar bandeja de la clase empleado tiene un error de logica
 
 - falta implementar los metodos para la Bandeja de entrada
 
@@ -46,6 +52,8 @@
 
 
 ### correcciones
+
+- se ha corregido un bug en el Import del menu que no guardaba en la lista a los empleados
 
 - se ha movido el metodo Main a la clase Menu
 

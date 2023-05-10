@@ -14,10 +14,13 @@ public class Empleado {
     public void revisarBandeja(){
         int i = 0;
         List tempList = bandeja.getNo_leidos();
-        while (bandeja.getNo_leidos() != null){
-            mensaje msg = (mensaje) tempList.removeFirst();
-            System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
-            i++; 
+        if(!tempList.isEmpty()){
+            while (tempList != null){
+                mensaje msg = (mensaje) tempList.removeFirst();
+                // System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
+                System.out.println("[ "+ (i+1) +" ]. " + ((mensaje)tempList.removeFirst()).getTitulo());
+                i++; 
+            }
         }
     }
 
