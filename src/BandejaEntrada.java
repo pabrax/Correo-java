@@ -78,10 +78,9 @@ public class BandejaEntrada {
         msg = new mensaje(nameUser, titulo, contenido, f);
         return msg;
     }
-    public void guardarMensajes() {
-        
+
+    public void guardarMensajes() {    
         // guarda los mensajes no leidos
-        
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "BA.txt");
             File archivo = new File(pathfile);
@@ -96,7 +95,6 @@ public class BandejaEntrada {
             
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
-            
             while (!no_leidos.isEmpty()) {
                 String elemento = no_leidos.removeLast().toString();
                 buffer.write(elemento);
@@ -108,7 +106,6 @@ public class BandejaEntrada {
         }
         
         // guarda los mensajes leidos
-        
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "ML.txt");
             File archivo = new File(pathfile);
@@ -123,7 +120,6 @@ public class BandejaEntrada {
 
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
-            
             while (!leidos.isEmpty()) {
                 String elemento = leidos.removeLast().toString();
                 buffer.write(elemento);
@@ -135,7 +131,6 @@ public class BandejaEntrada {
         }
         
         // guarda los borradores
-        
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "B.txt");
             File archivo = new File(pathfile);
@@ -150,7 +145,6 @@ public class BandejaEntrada {
             
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
-            
             while (!borrador.isEmpty()) {
                 String elemento = borrador.pop().toString();
                 buffer.write(elemento);
@@ -160,8 +154,8 @@ public class BandejaEntrada {
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }
-        
     }
+
     private Fecha fechaActual() {
         LocalDate fechaActual = LocalDate.now();
         String temp = fechaActual.toString();
