@@ -1,5 +1,5 @@
 import data_structures.List;
-import userClass.Usuario;
+import Objects.Usuario;
 import data_structures.*;
 
 public class Administrador extends Empleado{
@@ -12,8 +12,11 @@ public class Administrador extends Empleado{
         Menu m = new Menu();
         List temp = new List();
         temp = m.getListaUsuarios();
-        temp.addLast(u);
-        m.setListaUsuarios(temp);
+
+        if(m.Buscar(u.getId()) == null){
+            temp.addLast(u);
+            m.setListaUsuarios(temp);
+        }
     }
    
     public void CambiarContrasena(){
@@ -44,20 +47,9 @@ public class Administrador extends Empleado{
     }
     
     public void actualizarInfo(){
+        MenuTools mt = new MenuTools();
+        mt.toFile();
         
-        try {
-            
-            
-        } catch (Exception e) {
-        
-        }
-
-        try {
-
-            
-        } catch (Exception e) {
-        
-        }
     }
     
 }

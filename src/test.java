@@ -2,7 +2,7 @@ import data_structures.List;
 
 public class test {
     public static void main(String[] args) {
-        Menu m = new Menu();
+        MenuTools m = new MenuTools();
         m.Import();
 
         List listaEmpleados = m.getListaUsuarios();

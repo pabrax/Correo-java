@@ -1,9 +1,11 @@
 import data_structures.*;
-import userClass.*;
+
 import java.time.LocalDate;
 import java.io.*;
 
 import javax.swing.JOptionPane;
+
+import Objects.*;
 
 public class BandejaEntrada {
 
@@ -32,8 +34,8 @@ public class BandejaEntrada {
 
     public void enviarMensaje(Long destinatario) {
         Menu m = new Menu();
-        List temp = m.getListaUsuarios(); 
-        while(temp != null){
+        List tempList = m.getListaUsuarios(); 
+        while(tempList != null){
 
         }
 
@@ -71,13 +73,8 @@ public class BandejaEntrada {
         
         String contenido = JOptionPane.showInputDialog(null, "Mensaje", "Nuevo Mensaje", 1);
 
-        LocalDate fechaActual = LocalDate.now();
-        String temp = fechaActual.toString();
-        String[] newFecha =temp.split("-");
-
-        Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
-
         String nameUser = user.getnombre(); 
+        Fecha f = fechaActual();
 
         msg = new mensaje(nameUser, titulo, contenido, f);
         return msg;
@@ -166,6 +163,13 @@ public class BandejaEntrada {
         }
         
     }
-
+    private Fecha fechaActual() {
+        LocalDate fechaActual = LocalDate.now();
+        String temp = fechaActual.toString();
+        String[] newFecha =temp.split("-");
+    
+        Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
+        return f;
+    }
 
 }

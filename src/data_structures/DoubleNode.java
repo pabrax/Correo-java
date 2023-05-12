@@ -2,8 +2,8 @@ package data_structures;
 
 public class DoubleNode {
     private Object data;
-    private Node next;
-    private Node prev;
+    private DoubleNode next;
+    private DoubleNode prev;
     
     public DoubleNode(Object d) {
         this.data = d;
@@ -21,11 +21,11 @@ public class DoubleNode {
         return data;
     }
 
-    public Node getNext() {
+    public DoubleNode getNext() {
         return next;
     }
 
-    public Node getPrev() {
+    public DoubleNode getPrev() {
         return prev;
     }
 
@@ -33,11 +33,11 @@ public class DoubleNode {
         this.data = data;
     }
 
-    public void setNext(Node next) {
+    public void setNext(DoubleNode next) {
         this.next = next;
     }
 
-    public void setPrev(Node prev) {
+    public void setPrev(DoubleNode prev) {
         this.prev = prev;
     }
 

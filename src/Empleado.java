@@ -1,5 +1,6 @@
+import Objects.Usuario;
+import Objects.mensaje;
 import data_structures.List;
-import userClass.Usuario;
 
 public class Empleado {
 
@@ -18,7 +19,7 @@ public class Empleado {
             while (tempList != null){
                 mensaje msg = (mensaje) tempList.removeFirst();
                 // System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
-                System.out.println("[ "+ (i+1) +" ]. " + ((mensaje)tempList.removeFirst()).getTitulo());
+                System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
                 i++; 
             }
         }
