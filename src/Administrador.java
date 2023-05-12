@@ -8,10 +8,11 @@ public class Administrador extends Empleado{
         this.user = new Usuario();
     }
     
-    public void registrarUsuarios(Usuario u){
-        Menu m = new Menu();
+    public void registrarUsuarios(){
+        MenuTools m = new MenuTools();
         List temp = new List();
         temp = m.getListaUsuarios();
+        Usuario u = m.create();
 
         if(m.Buscar(u.getId()) == null){
             temp.addLast(u);
@@ -23,6 +24,13 @@ public class Administrador extends Empleado{
         // Menu m = new Menu();
     }
     
+    
+    public void actualizarInfo(){
+        MenuTools mt = new MenuTools();
+        mt.toFile();
+        
+    }
+
     public Usuario eliminarUsuario(long id){
         Menu m = new Menu();
         Node actual = m.getListaUsuarios().First();
@@ -44,12 +52,6 @@ public class Administrador extends Empleado{
             actual = actual.getNext();
         }
         return null;
-    }
-    
-    public void actualizarInfo(){
-        MenuTools mt = new MenuTools();
-        mt.toFile();
-        
     }
     
 }

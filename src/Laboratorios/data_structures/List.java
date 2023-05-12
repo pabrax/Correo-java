@@ -24,8 +24,10 @@ public class List {
     public void print() {
         Node actual = head;
         StringBuilder sb = new StringBuilder();
+        int index = 0;
         while (actual != null) {
-            sb.append(actual.getDato()).append("\n");
+            // sb.append(actual.getDato()).append("\n");
+            sb.append(index++).append(") ").append(actual.getDato()).append("\n");
             actual = actual.getNext();
         }
         JOptionPane.showMessageDialog(null, sb.toString());

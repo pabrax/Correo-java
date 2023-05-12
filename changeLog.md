@@ -1,6 +1,12 @@
 
 ### caracteristicas nuevas
 
+- la clase menuTools se encuentra en el Menu.java
+
+- se han movido algunas clases de carpeta y se han creado otras como MenuTools, que ayuda a la correcta ejecucion del programa y para organizar el codigo
+
+- se ha refactorizado el codigo y organizado mejor
+
 - se ha implementado la clase temporal test, sirve para revisar el correcto funcionamiento del programa
 
 - la listaEmpleados del Menu guardan correctamente los empleados y su usuario equivalente

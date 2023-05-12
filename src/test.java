@@ -9,5 +9,7 @@ public class test {
         
         // System.out.println(((Empleado) listaEmpleados.First().getDato()).getUser().toString(););
         ((Empleado) listaEmpleados.First().getDato()).revisarBandeja();
+        ((Empleado) listaEmpleados.First().getDato()).verMensajesLeidos();
+        ((Empleado) listaEmpleados.First().getDato()).verBorradores();
     }
 }

@@ -1,6 +1,4 @@
 import Objects.Usuario;
-import Objects.mensaje;
-import data_structures.List;
 
 public class Empleado {
 
@@ -13,23 +11,15 @@ public class Empleado {
     }
 
     public void revisarBandeja(){
-        int i = 0;
-        List tempList = bandeja.getNo_leidos();
-        if(!tempList.isEmpty()){
-            while (tempList != null){
-                mensaje msg = (mensaje) tempList.removeFirst();
-                // System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
-                System.out.println("[ "+ (i+1) +" ]. " + msg.getTitulo());
-                i++; 
-            }
-        }
+        bandeja.getNo_leidos().print();
     }
 
     public void verMensajesLeidos(){
-        
+        bandeja.getLeidos().print();
     }
-
-    public void VerBorradores(){
+    
+    public void verBorradores(){
+        bandeja.getBorrador().display();
     }
 
 
