@@ -19,16 +19,16 @@ public class Administrador extends Empleado{
             m.setlistaEmpleados(temp);
         }
     }
-   
-    public void CambiarContrasena(){
-        // Menu m = new Menu();
+    // ! no se ha implementado este metodo
+    public void CambiarContrasena(Long userID, String newPwd){
+        Menu m = new Menu();
+        m.Buscar(userID);
     }
     
     
     public void actualizarInfo(){
         MenuTools mt = new MenuTools();
         mt.toFile();
-        
     }
 
     public Usuario eliminarUsuario(long id){
