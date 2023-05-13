@@ -20,7 +20,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String n,long id, Fecha fecha,String ciudad_nacimiento,long tel,String email,Direccion dir, String passwd, String tipoUsuario){
+    public Usuario(String n,long id, Fecha fecha,String ciudad_nacimiento,long tel,String email,Direccion dir){
         this.nombre =  n;
         this.id = id;
         this.fecha = fecha;
@@ -29,8 +29,6 @@ public class Usuario {
         this.email = email;
         this.dir = dir;
 
-        this.contrasena = passwd;
-        this.TipoUsuario = tipoUsuario;
     }
 
     public Usuario(String n, long id) {

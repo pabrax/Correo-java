@@ -20,5 +20,4 @@ public class EmpleadoBandeja {
         this.bandejaEntrada = bandejaEntrada;
     }
 
-    
 }

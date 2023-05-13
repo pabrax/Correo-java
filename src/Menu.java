@@ -234,6 +234,8 @@ class MenuTools extends Menu {
                 try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
                     line2 = br2.readLine();
                     String[] credentials = line2.split(" ");
+                    usuario.setContrasena(credentials[1]);
+                    usuario.setTipoUsuario(credentials[2]);
                     br2.close();
 
                     System.out.println("Se han importado las credenciales desde el archivo");
