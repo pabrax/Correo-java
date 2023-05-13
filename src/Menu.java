@@ -3,11 +3,12 @@
 * se encarga de comparar si un usuario es empleado o admin
 * loguea al usuario y muestra un menu de opciones respectivo para cada tipo de usuario
 */
-
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import Objects.*;
 import java.io.*;
 import data_structures.*;
+
 
 public class Menu {
 
@@ -28,18 +29,90 @@ public class Menu {
 
     // metodos propios de la clase
 
-    public void MenuEmpleado() {
-        // crear el menu para el empleado
-        // bandeja entrada
-        System.out.println("menu Empleado");
+    public void menuEmpleado() {
+        //meb menu empleado bandeja
+        Empleado meb = new Empleado();
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("1. Redactar mensaje");
+            System.out.println("2. Revisar bandeja de entrada");
+            System.out.println("3. Ver mensajes leídos");
+            System.out.println("4. Ver borradores");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    meb.bandeja.redactarMensaje();
+                    break;
+                case 2:
+                    meb.revisarBandeja();
+                    break;
+                case 3:
+                    meb.verMensajesLeidos();
+                    break;
+                case 4:
+                    meb.verBorradores();
+                    break;
+                case 5:
+                    System.out.println("Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+                    break;
+            }
+        } while (opcion != 5);
     }
+    
 
-    public void MenuAdmin() {
-        // crear el menu para el admin
-        // bandeja de entrada
-        // herramientas de administrador
-        System.out.println("menu Admin");
+    public void menuAdmin() {
+        //mab menu administrador bandeja
+        Administrador mab = new Administrador();
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("1. Registrar usuario");
+            System.out.println("2. Cambiar contraseña");
+            System.out.println("3. Eliminar usuario");
+            System.out.println("4. Actualizar información");
+            System.out.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    mab.registrarUsuarios();
+                    break;
+                case 2:
+                    System.out.print("Ingrese el ID del usuario: ");
+                    Long userID = sc.nextLong();
+                    System.out.print("Ingrese la nueva contraseña: ");
+                    String newPwd = sc.next();
+                    mab.CambiarContrasena(userID, newPwd);
+                    break;
+                case 3:
+                    System.out.print("Ingrese el ID del usuario a eliminar: ");
+                    long id = sc.nextLong();
+                    Usuario u = mab.eliminarUsuario(id);
+                    if (u == null) {
+                        System.out.println("Usuario no encontrado");
+                    } else {
+                        System.out.println("Usuario eliminado: " + u);
+                    }
+                    break;
+                case 4:
+                    mab.actualizarInfo();
+                    break;
+                case 5:
+                    System.out.println("Hasta luego!");
+                    break;
+                default:
+                    System.out.println("Opción inválida");
+                    break;
+            }
+        } while (opcion != 5);
     }
+    
 
     // toFile para escribir los usuarios en los archivos de password y Empleados
     public Node Buscar(Long id) {
