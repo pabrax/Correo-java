@@ -108,14 +108,35 @@ class MenuTools extends Menu {
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println("Error al escribir el archivo");
+            System.out.println("Error al guardar los usuarios");
         }
+
+        try {
+            File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
+
+            PrintWriter writer = new PrintWriter(file);
+            Node actual = listaEmpleados.First();
+            while (actual != null) {
+                Usuario u = (Usuario) actual.getDato();
+                String credenciales = (u.getId() + u.getContrasena() + u.getTipoUsuario()); 
+                writer.println(credenciales);
+                actual = actual.getNext();
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Error al guardar las credenciales");
+        }
+
     }
 
     public void Import() {
+        
         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
+        File filePwd = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
+        
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
+            String line2;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(" ");
                 String nombre = data[0];
@@ -136,6 +157,18 @@ class MenuTools extends Menu {
                 Direccion dir = new Direccion(calle, nomenclatura, barrio, ciudad, edificio, apto);
                 Usuario usuario = new Usuario(nombre, id, fecha, ciudadNacimiento, tel, email, dir);
 
+
+                try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
+                    line2 = br2.readLine();
+                    String[] credentials = line2.split(" ");
+                    br2.close();
+
+                    System.out.println("Se han importado las credenciales desde el archivo");
+                } catch (IOException e) {
+                    System.out.println("Error al tratar de importar la informacion");
+                    e.printStackTrace();
+                }
+
                 Empleado e = new Empleado();
                 e.setUser(usuario);
                 listaEmpleados.addLast(e);
@@ -146,6 +179,9 @@ class MenuTools extends Menu {
             System.out.println("Error al tratar de importar la informacion");
             e.printStackTrace();
         }
+
+
+
     }
 
     public Usuario create() {
