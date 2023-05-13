@@ -15,8 +15,8 @@ public class BandejaEntrada {
     private mensaje msg;
 
     // otras clases
-
-    Usuario user;
+    Empleado e = new Empleado();
+    Usuario user = e.getUser();
 
     public BandejaEntrada() {
         this.no_leidos = new List();

@@ -1,6 +1,6 @@
 package Objects;
 
-import java.io.*;
+// import java.io.*;
 
 public class Usuario {
 
@@ -11,14 +11,16 @@ public class Usuario {
     private long tel;
     private String email;
     private Direccion dir;
+
     private String contrasena;
+    private String TipoUsuario;
 
     // constructores
 
     public Usuario() {
     }
 
-    public Usuario(String n,long id, Fecha fecha,String ciudad_nacimiento,long tel,String email,Direccion dir){
+    public Usuario(String n,long id, Fecha fecha,String ciudad_nacimiento,long tel,String email,Direccion dir, String passwd, String tipoUsuario){
         this.nombre =  n;
         this.id = id;
         this.fecha = fecha;
@@ -26,6 +28,9 @@ public class Usuario {
         this.tel = tel;
         this.email = email;
         this.dir = dir;
+
+        this.contrasena = passwd;
+        this.TipoUsuario = tipoUsuario;
     }
 
     public Usuario(String n, long id) {
@@ -34,10 +39,12 @@ public class Usuario {
     }
 
     // sets
-
+    public void setTipoUsuario(String tipo) {
+        this.TipoUsuario = tipo;
+    }
 
     public void setContrasena(String pwd) {
-        this.nombre = pwd;
+        this.contrasena = pwd;
     }
 
     public void setnombre(String nombre) {
@@ -69,6 +76,10 @@ public class Usuario {
     }
 
     // gets
+
+    public String getTipoUsuario() {
+        return TipoUsuario;
+    }
 
     public String getContrasena() {
         return contrasena;
@@ -107,28 +118,29 @@ public class Usuario {
         return nombre + " " + id + " " + fecha + " " + ciudad_nacimiento + " " + tel + " " + email + " " + dir;
     }
 
-    public void toFile(File output) {
-        try (BufferedReader br = new BufferedReader(new FileReader(output))) {
-            String linea;
-            String content = this.toString();
-            linea = br.readLine();
-            if (linea != null) {
-                try (BufferedWriter bw = new BufferedWriter(new FileWriter(output, true))) {
-                    bw.write("\n" + content);
-                    System.out.println("se ha agregado contenido al archivo");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try (FileWriter fw = new FileWriter(output)) {
-                    fw.write(content);
-                } catch (IOException e) {
-                    System.out.println("Error: " + e.getMessage());
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
 }
+
+// public void toFile(File output) {
+//     try (BufferedReader br = new BufferedReader(new FileReader(output))) {
+//         String linea;
+//         String content = this.toString();
+//         linea = br.readLine();
+//         if (linea != null) {
+//             try (BufferedWriter bw = new BufferedWriter(new FileWriter(output, true))) {
+//                 bw.write("\n" + content);
+//                 System.out.println("se ha agregado contenido al archivo");
+//             } catch (IOException e) {
+//                 e.printStackTrace();
+//             }
+//         } else {
+//             try (FileWriter fw = new FileWriter(output)) {
+//                 fw.write(content);
+//             } catch (IOException e) {
+//                 System.out.println("Error: " + e.getMessage());
+//             }
+//         }
+//     } catch (IOException e) {
+//         e.printStackTrace();
+//     }
+// }
