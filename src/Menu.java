@@ -11,20 +11,19 @@ import data_structures.*;
 
 public class Menu {
 
-    protected List listaUsuarios;
+    List listaEmpleados;
 
     public Menu() {
-        this.listaUsuarios = new List();
+        this.listaEmpleados = new List();
     }
 
     // sets y gets
-
-    public List getListaUsuarios() {
-        return listaUsuarios;
+    public List getlistaEmpleados() {
+        return listaEmpleados;
     }
 
-    public void setListaUsuarios(List listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
+    public void setlistaEmpleados(List listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
     }
 
     // metodos propios de la clase
@@ -45,7 +44,7 @@ public class Menu {
     // toFile para escribir los usuarios en los archivos de password y Empleados
 
     public Node Buscar(Long id) {
-        Node actual = listaUsuarios.First();
+        Node actual = listaEmpleados.First();
         while (actual != null) {
             Usuario u = (Usuario) actual.getDato();
             if (u.getId() == id) {
@@ -73,7 +72,6 @@ public class Menu {
                 mt.ValidateUser(idLogin, LoginPassword, data);
                 
             }
-
         } catch(Exception e) {
             System.out.println("error al leer las credenciales");
         }
@@ -105,7 +103,7 @@ class MenuTools extends Menu {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
 
             PrintWriter writer = new PrintWriter(file);
-            Node actual = listaUsuarios.First();
+            Node actual = listaEmpleados.First();
             while (actual != null) {
                 Usuario u = (Usuario) actual.getDato();
                 writer.println(u.toString());
@@ -144,7 +142,7 @@ class MenuTools extends Menu {
 
                 Empleado e = new Empleado();
                 e.setUser(usuario);
-                listaUsuarios.addLast(e);
+                listaEmpleados.addLast(e);
             }
             br.close();
             System.out.println("Se han importado los usuarios desde el archivo");

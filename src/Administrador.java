@@ -11,12 +11,12 @@ public class Administrador extends Empleado{
     public void registrarUsuarios(){
         MenuTools m = new MenuTools();
         List temp = new List();
-        temp = m.getListaUsuarios();
+        temp = m.getlistaEmpleados();
         Usuario u = m.create();
 
         if(m.Buscar(u.getId()) == null){
             temp.addLast(u);
-            m.setListaUsuarios(temp);
+            m.setlistaEmpleados(temp);
         }
     }
    
@@ -33,18 +33,18 @@ public class Administrador extends Empleado{
 
     public Usuario eliminarUsuario(long id){
         Menu m = new Menu();
-        Node actual = m.getListaUsuarios().First();
+        Node actual = m.getlistaEmpleados().First();
         Node anterior = null;
         while (actual != null) {
             Usuario u = (Usuario) actual.getDato();
             if (u.getId() == id) {
                 if (anterior == null) {
-                    m.getListaUsuarios().removeFirst();
+                    m.getlistaEmpleados().removeFirst();
                 } else if (actual.getNext() == null) {
-                    m.getListaUsuarios().removeLast();
+                    m.getlistaEmpleados().removeLast();
                 } else {
                     anterior.setNext(actual.getNext());
-                    m.getListaUsuarios().setSize(m.getListaUsuarios().size() - 1);
+                    m.getlistaEmpleados().setSize(m.getlistaEmpleados().size() - 1);
                 }
                 return u;
             }

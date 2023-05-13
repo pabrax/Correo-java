@@ -6,46 +6,26 @@ import java.io.*;
 
 import Objects.*;
 
-public class BandejaEntrada {
+public class BandejaEntrada extends Empleado {
 
     // colecciones de datos
-
     private List no_leidos;
     private List leidos;
     private stack borrador;
     private mensaje msg;
 
     // otras clases
-    private Usuario user;
-
 
     public BandejaEntrada() {
         this.no_leidos = new List();
         this.leidos = new List();
         this.borrador = new stack();
-        this.user = new Usuario();
-    }
-
-    
-    public mensaje descartarMensaje() {
-        return (mensaje) borrador.pop();
-    }
-
-    public void enviarMensaje(Long destinatario) {
-        Menu m = new Menu();
-        List tempList = m.getListaUsuarios(); 
-        while(tempList != null){
-
-        }
-
     }
 
     // gets y sets
-
     public List getNo_leidos() {
         return no_leidos;
     }
-
     public void setNo_leidos(List no_leidos) {
         this.no_leidos = no_leidos;
     }
@@ -53,7 +33,6 @@ public class BandejaEntrada {
     public List getLeidos() {
         return leidos;
     }
-
     public void setLeidos(List leidos) {
         this.leidos = leidos;
     }
@@ -61,22 +40,40 @@ public class BandejaEntrada {
     public stack getBorrador() {
         return borrador;
     }
-
     public void setBorrador(stack borrador) {
         this.borrador = borrador;
     }
 
-
+    // metodos de la clase
+    public mensaje descartarMensaje() {
+        return (mensaje) borrador.pop();
+    }
+    
     public mensaje redactarMensaje() {
         String titulo = JOptionPane.showInputDialog(null, "Titulo", "Nuevo Mensaje", 1);
-        
         String contenido = JOptionPane.showInputDialog(null, "Mensaje", "Nuevo Mensaje", 1);
-
         String nameUser = user.getnombre(); 
         Fecha f = fechaActual();
-
         msg = new mensaje(nameUser, titulo, contenido, f);
         return msg;
+    }
+    
+    public void enviarMensaje(Long destinatario) {
+        Menu m = new Menu();
+        Node actual = m.listaEmpleados.First();
+        msg = redactarMensaje();
+        while(actual != null){
+            if(((Empleado) actual.getDato()).getUser().getId() == destinatario) {
+                if(IsSend()){
+                    ((Empleado) actual.getDato()).bandeja.no_leidos.addLast(msg);
+                } else {
+                    borrador.push(msg);
+                }
+                return;
+            }
+            actual = actual.getNext();
+        }
+        System.out.println("usuario no encontrado");
     }
 
     public void guardarMensajes() {    
@@ -156,13 +153,23 @@ public class BandejaEntrada {
         }
     }
 
+
+
     private Fecha fechaActual() {
         LocalDate fechaActual = LocalDate.now();
         String temp = fechaActual.toString();
         String[] newFecha =temp.split("-");
-    
         Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
         return f;
+    }
+
+    private Boolean IsSend(){
+        Boolean enviar = false;
+        int comprobacion = Integer.parseInt(JOptionPane.showInputDialog(null, "que desea hacer con el mensaje\n1) enviar mensaje\n2) salir"));
+        if (comprobacion == 1) {
+            enviar = true;
+        }
+        return enviar;
     }
 
 }
