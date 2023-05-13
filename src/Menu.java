@@ -160,10 +160,10 @@ class MenuTools extends Menu {
         if (idLogin == idUser && LoginPassword.equals(passwd)){
             if (tipoUsuario.equals("administrador")) {
                 // si es verdadero es Admin
-                MenuAdmin();
+                menuAdmin();
             } else {
                 // si es falso es empleado
-                MenuEmpleado();
+                menuEmpleado();
             }
         }    
     }
