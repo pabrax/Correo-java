@@ -5,11 +5,12 @@ public class test {
         MenuTools m = new MenuTools();
         m.Import();
 
-        m.listaEmpleados.print();
+        // m.listaEmpleados.print();
         
         // System.out.println(((Empleado) listaEmpleados.First().getDato()).getUser().toString(););
         // ((Empleado) listaEmpleados.First().getDato()).revisarBandeja();
         // ((Empleado) listaEmpleados.First().getDato()).verMensajesLeidos();
         // ((Empleado) listaEmpleados.First().getDato()).verBorradores();
+        m.Login();
     }
 }

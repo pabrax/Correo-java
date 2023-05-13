@@ -6,7 +6,7 @@ import java.io.*;
 
 import Objects.*;
 
-public class BandejaEntrada extends Empleado {
+public class BandejaEntrada {
 
     // colecciones de datos
     private List no_leidos;
@@ -15,6 +15,8 @@ public class BandejaEntrada extends Empleado {
     private mensaje msg;
 
     // otras clases
+
+    Usuario user;
 
     public BandejaEntrada() {
         this.no_leidos = new List();

@@ -42,7 +42,6 @@ public class Menu {
     }
 
     // toFile para escribir los usuarios en los archivos de password y Empleados
-
     public Node Buscar(Long id) {
         Node actual = listaEmpleados.First();
         while (actual != null) {
@@ -79,9 +78,8 @@ public class Menu {
 }
 
 
-
 class MenuTools extends Menu {
-
+    
     public void ValidateUser(Long idLogin, String LoginPassword, String[] data) {
         Long idUser = Long.parseLong(data[0]);
         String passwd = data[1];
@@ -94,8 +92,7 @@ class MenuTools extends Menu {
                 // si es falso es empleado
                 MenuEmpleado();
             }
-        }
-        
+        }    
     }
 
     public void toFile() {
@@ -110,7 +107,6 @@ class MenuTools extends Menu {
                 actual = actual.getNext();
             }
             writer.close();
-
         } catch (Exception e) {
             System.out.println("Error al escribir el archivo");
         }
@@ -176,7 +172,7 @@ class MenuTools extends Menu {
         dir.setApto(JOptionPane.showInputDialog(null, "Direccion:\nApartamento"));
         user.setDir(dir);
 
-        return user = new Usuario();
+        return user;
     }
 }
 

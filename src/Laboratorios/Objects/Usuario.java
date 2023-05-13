@@ -11,6 +11,7 @@ public class Usuario {
     private long tel;
     private String email;
     private Direccion dir;
+    private String contrasena;
 
     // constructores
 
@@ -33,6 +34,11 @@ public class Usuario {
     }
 
     // sets
+
+
+    public void setContrasena(String pwd) {
+        this.nombre = pwd;
+    }
 
     public void setnombre(String nombre) {
         this.nombre = nombre;
@@ -63,6 +69,10 @@ public class Usuario {
     }
 
     // gets
+
+    public String getContrasena() {
+        return contrasena;
+    }
 
     public String getnombre() {
         return nombre;

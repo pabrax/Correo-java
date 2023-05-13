@@ -19,10 +19,16 @@ public class Administrador extends Empleado{
             m.setlistaEmpleados(temp);
         }
     }
-    // ! no se ha implementado este metodo
+    // ? falta testear
     public void CambiarContrasena(Long userID, String newPwd){
         Menu m = new Menu();
-        m.Buscar(userID);
+        Node actual = m.Buscar(userID);
+        if(actual != null){
+            Usuario u = ((Empleado) actual.getDato()).user;
+            u.setContrasena(newPwd);
+        } else {
+            System.out.println("no se encontro al usuario " + userID);
+        }
     }
     
     
