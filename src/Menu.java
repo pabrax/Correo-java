@@ -212,23 +212,7 @@ class MenuTools extends Menu {
             String line2;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(" ");
-                String nombre = data[0];
-                long id = Long.parseLong(data[1]);
-                short dia = Short.parseShort(data[2]);
-                short mes = Short.parseShort(data[3]);
-                short anio = Short.parseShort(data[4]);
-                Fecha fecha = new Fecha(dia, mes, anio);
-                String ciudadNacimiento = data[5];
-                long tel = Long.parseLong(data[6]);
-                String email = data[7];
-                String calle = data[8];
-                String nomenclatura = data[9];
-                String barrio = data[10];
-                String ciudad = data[11];
-                String edificio = data[12];
-                String apto = data[13];
-                Direccion dir = new Direccion(calle, nomenclatura, barrio, ciudad, edificio, apto);
-                Usuario usuario = new Usuario(nombre, id, fecha, ciudadNacimiento, tel, email, dir);
+                Usuario usuario = userData(data);
 
 
                 try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
@@ -243,9 +227,8 @@ class MenuTools extends Menu {
                     System.out.println("Error al tratar de importar la informacion");
                     e.printStackTrace();
                 }
-
-                Empleado e = new Empleado();
-                e.setUser(usuario);
+                
+                Empleado e = new Empleado(usuario);
                 listaEmpleados.addLast(e);
             }
             br.close();
@@ -257,6 +240,27 @@ class MenuTools extends Menu {
 
 
 
+    }
+
+    private Usuario userData(String[] data) {
+        String nombre = data[0];
+        long id = Long.parseLong(data[1]);
+        short dia = Short.parseShort(data[2]);
+        short mes = Short.parseShort(data[3]);
+        short anio = Short.parseShort(data[4]);
+        Fecha fecha = new Fecha(dia, mes, anio);
+        String ciudadNacimiento = data[5];
+        long tel = Long.parseLong(data[6]);
+        String email = data[7];
+        String calle = data[8];
+        String nomenclatura = data[9];
+        String barrio = data[10];
+        String ciudad = data[11];
+        String edificio = data[12];
+        String apto = data[13];
+        Direccion dir = new Direccion(calle, nomenclatura, barrio, ciudad, edificio, apto);
+        Usuario usuario = new Usuario(nombre, id, fecha, ciudadNacimiento, tel, email, dir);
+        return usuario;
     }
 
     public Usuario create() {

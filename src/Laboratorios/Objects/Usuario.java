@@ -28,7 +28,6 @@ public class Usuario {
         this.tel = tel;
         this.email = email;
         this.dir = dir;
-
     }
 
     public Usuario(String n, long id) {
@@ -115,30 +114,4 @@ public class Usuario {
     public String toString() {
         return nombre + " " + id + " " + fecha + " " + ciudad_nacimiento + " " + tel + " " + email + " " + dir;
     }
-
-    
 }
-
-// public void toFile(File output) {
-//     try (BufferedReader br = new BufferedReader(new FileReader(output))) {
-//         String linea;
-//         String content = this.toString();
-//         linea = br.readLine();
-//         if (linea != null) {
-//             try (BufferedWriter bw = new BufferedWriter(new FileWriter(output, true))) {
-//                 bw.write("\n" + content);
-//                 System.out.println("se ha agregado contenido al archivo");
-//             } catch (IOException e) {
-//                 e.printStackTrace();
-//             }
-//         } else {
-//             try (FileWriter fw = new FileWriter(output)) {
-//                 fw.write(content);
-//             } catch (IOException e) {
-//                 System.out.println("Error: " + e.getMessage());
-//             }
-//         }
-//     } catch (IOException e) {
-//         e.printStackTrace();
-//     }
-// }

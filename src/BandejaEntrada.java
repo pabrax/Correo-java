@@ -15,13 +15,19 @@ public class BandejaEntrada {
     private mensaje msg;
 
     // otras clases
-    Empleado e = new Empleado();
-    Usuario user = e.getUser();
+    private Usuario user;
 
     public BandejaEntrada() {
         this.no_leidos = new List();
         this.leidos = new List();
         this.borrador = new stack();
+    }
+
+    public BandejaEntrada(Usuario usuario) {
+        this.no_leidos = new List();
+        this.leidos = new List();
+        this.borrador = new stack();
+        this.user = usuario;
     }
 
     // gets y sets
