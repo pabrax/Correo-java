@@ -203,43 +203,42 @@ class MenuTools extends Menu {
     }
 
     public void Import() {
-        
+
         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
-        File filePwd = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
-        
+        File filePwd = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));        
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            String line2;
+            List credenciales = new List();    
+            try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
+                String line2;
+                while ((line2 = br2.readLine()) != null) {
+                    String[] credentials = line2.split(" ");
+                    credenciales.addLast(credentials);
+                }
+                br2.close();
+                System.out.println("Se han importado las credenciales desde el archivo");
+            } catch (IOException e) {
+                System.out.println("Error al tratar de importar la informacion");
+                e.printStackTrace();
+            }
+            
+            int credIndex = 0;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(" ");
                 Usuario usuario = userData(data);
-
-
-                try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
-                    line2 = br2.readLine();
-                    String[] credentials = line2.split(" ");
-                    usuario.setContrasena(credentials[1]);
-                    usuario.setTipoUsuario(credentials[2]);
-                    br2.close();
-
-                    System.out.println("Se han importado las credenciales desde el archivo");
-                } catch (IOException e) {
-                    System.out.println("Error al tratar de importar la informacion");
-                    e.printStackTrace();
-                }
-                
+                usuario.setContrasena(((String[]) credenciales.get(credIndex))[1]);
+                usuario.setTipoUsuario(((String[]) credenciales.get(credIndex))[2]);
+                credIndex += 1;
                 Empleado e = new Empleado(usuario);
                 listaEmpleados.addLast(e);
             }
             br.close();
             System.out.println("Se han importado los usuarios desde el archivo");
+        
         } catch (IOException e) {
             System.out.println("Error al tratar de importar la informacion");
             e.printStackTrace();
         }
-
-
-
     }
 
     private Usuario userData(String[] data) {

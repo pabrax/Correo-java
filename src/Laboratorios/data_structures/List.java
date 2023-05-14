@@ -120,4 +120,15 @@ public class List {
         size--;
         return dato;
     }
+
+    public Object get(int indice) {
+        if (indice < 0 || indice >= size) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        Node actual = head;
+        for (int i = 0; i < indice; i++) {
+            actual = actual.getNext();
+        }
+        return actual.getDato();
+    }
 }
