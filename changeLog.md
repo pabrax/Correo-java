@@ -33,6 +33,10 @@
 
 ### correcciones
 
+- se ha corregido el metodo import, no validaba bien las contraseñas antes de asginarlas al usuario
+
+- la bandejaEntrada ahora esta enlazada con la clase Empleado
+
 - En Los usuarios falta por validar sus credenciales en el Import (Password.txt)
 
 - se ha corregido un bug en el Import del menu que no guardaba en la lista a los empleados
