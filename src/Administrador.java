@@ -13,9 +13,10 @@ public class Administrador extends Empleado{
         List temp = new List();
         temp = m.getlistaEmpleados();
         Usuario u = m.create();
-
+        
         if(m.Buscar(u.getId()) == null){
-            temp.addLast(u);
+            m.listaEmpleados.addLast(u);
+
             m.setlistaEmpleados(temp);
         }
     }
