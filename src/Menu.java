@@ -1,3 +1,4 @@
+
 /* 
 * esta clase se encarga de loguear a un usuario despues de importar la informacion de cada usuario
 * se encarga de comparar si un usuario es empleado o admin
@@ -8,7 +9,6 @@ import javax.swing.JOptionPane;
 import Objects.*;
 import java.io.*;
 import data_structures.*;
-
 
 public class Menu {
 
@@ -30,18 +30,20 @@ public class Menu {
     // metodos propios de la clase
 
     public void menuEmpleado() {
-        //meb menu empleado bandeja
+        // Menú empleado bandeja
         Empleado meb = new Empleado();
-        Scanner sc = new Scanner(System.in);
         int opcion;
         do {
-            System.out.println("1. Redactar mensaje");
-            System.out.println("2. Revisar bandeja de entrada");
-            System.out.println("3. Ver mensajes leídos");
-            System.out.println("4. Ver borradores");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = sc.nextInt();
+            String input = JOptionPane.showInputDialog(
+                    "1. Redactar mensaje\n" +
+                            "2. Revisar bandeja de entrada\n" +
+                            "3. Ver mensajes leídos\n" +
+                            "4. Ver borradores\n" +
+                            "5. Salir\n" +
+                            "Seleccione una opción:");
+
+            opcion = Integer.parseInt(input);
+
             switch (opcion) {
                 case 1:
                     meb.bandeja.redactarMensaje();
@@ -56,63 +58,64 @@ public class Menu {
                     meb.verBorradores();
                     break;
                 case 5:
-                    System.out.println("Hasta luego!");
+                    JOptionPane.showMessageDialog(null, "Hasta luego!");
                     break;
                 default:
-                    System.out.println("Opción inválida");
+                    JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
             }
         } while (opcion != 5);
     }
-    
 
     public void menuAdmin() {
-        //mab menu administrador bandeja
+        // Menú administrador bandeja
         Administrador mab = new Administrador();
-        Scanner sc = new Scanner(System.in);
         int opcion;
         do {
-            System.out.println("1. Registrar usuario");
-            System.out.println("2. Cambiar contraseña");
-            System.out.println("3. Eliminar usuario");
-            System.out.println("4. Actualizar información");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = sc.nextInt();
+            String input = JOptionPane.showInputDialog(
+                    "1. Registrar usuario\n" +
+                            "2. Cambiar contraseña\n" +
+                            "3. Eliminar usuario\n" +
+                            "4. Actualizar información\n" +
+                            "5. Salir\n" +
+                            "Seleccione una opción:");
+
+            opcion = Integer.parseInt(input);
+
             switch (opcion) {
                 case 1:
                     mab.registrarUsuarios();
                     break;
                 case 2:
-                    System.out.print("Ingrese el ID del usuario: ");
-                    Long userID = sc.nextLong();
-                    System.out.print("Ingrese la nueva contraseña: ");
-                    String newPwd = sc.next();
+                    String userIDInput = JOptionPane.showInputDialog("Ingrese el ID del usuario:");
+                    Long userID = Long.parseLong(userIDInput);
+
+                    String newPwd = JOptionPane.showInputDialog("Ingrese la nueva contraseña:");
                     mab.CambiarContrasena(userID, newPwd);
                     break;
                 case 3:
-                    System.out.print("Ingrese el ID del usuario a eliminar: ");
-                    long id = sc.nextLong();
+                    String idInput = JOptionPane.showInputDialog("Ingrese el ID del usuario a eliminar:");
+                    long id = Long.parseLong(idInput);
+
                     Usuario u = mab.eliminarUsuario(id);
                     if (u == null) {
-                        System.out.println("Usuario no encontrado");
+                        JOptionPane.showMessageDialog(null, "Usuario no encontrado");
                     } else {
-                        System.out.println("Usuario eliminado: " + u);
+                        JOptionPane.showMessageDialog(null, "Usuario eliminado: " + u);
                     }
                     break;
                 case 4:
                     mab.actualizarInfo();
                     break;
                 case 5:
-                    System.out.println("Hasta luego!");
+                    JOptionPane.showMessageDialog(null, "Hasta luego!");
                     break;
                 default:
-                    System.out.println("Opción inválida");
+                    JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
             }
         } while (opcion != 5);
     }
-    
 
     // toFile para escribir los usuarios en los archivos de password y Empleados
     public Node Buscar(Long id) {
@@ -142,22 +145,21 @@ public class Menu {
 
                 String[] data = line.split(" ");
                 mt.ValidateUser(idLogin, LoginPassword, data);
-                
+
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("error al leer las credenciales");
         }
     }
 }
 
-
 class MenuTools extends Menu {
-    
+
     public void ValidateUser(Long idLogin, String LoginPassword, String[] data) {
         Long idUser = Long.parseLong(data[0]);
         String passwd = data[1];
         String tipoUsuario = data[2];
-        if (idLogin == idUser && LoginPassword.equals(passwd)){
+        if (idLogin == idUser && LoginPassword.equals(passwd)) {
             if (tipoUsuario.equals("administrador")) {
                 // si es verdadero es Admin
                 menuAdmin();
@@ -165,7 +167,7 @@ class MenuTools extends Menu {
                 // si es falso es empleado
                 menuEmpleado();
             }
-        }    
+        }
     }
 
     public void toFile() {
@@ -191,7 +193,7 @@ class MenuTools extends Menu {
             Node actual = listaEmpleados.First();
             while (actual != null) {
                 Usuario u = (Usuario) actual.getDato();
-                String credenciales = (u.getId() + u.getContrasena() + u.getTipoUsuario()); 
+                String credenciales = (u.getId() + u.getContrasena() + u.getTipoUsuario());
                 writer.println(credenciales);
                 actual = actual.getNext();
             }
@@ -205,10 +207,10 @@ class MenuTools extends Menu {
     public void Import() {
 
         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
-        File filePwd = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));        
+        File filePwd = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            List credenciales = new List();    
+            List credenciales = new List();
             try (BufferedReader br2 = new BufferedReader(new FileReader(filePwd))) {
                 String line2;
                 while ((line2 = br2.readLine()) != null) {
@@ -221,7 +223,7 @@ class MenuTools extends Menu {
                 System.out.println("Error al tratar de importar la informacion");
                 e.printStackTrace();
             }
-            
+
             int credIndex = 0;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(" ");
@@ -234,7 +236,7 @@ class MenuTools extends Menu {
             }
             br.close();
             System.out.println("Se han importado los usuarios desde el archivo");
-        
+
         } catch (IOException e) {
             System.out.println("Error al tratar de importar la informacion");
             e.printStackTrace();
@@ -270,12 +272,12 @@ class MenuTools extends Menu {
         user.setId(Long.parseLong(JOptionPane.showInputDialog(null, "ID")));
         user.setCiudad_nacimiento(JOptionPane.showInputDialog(null, "ciudad de nacimiento"));
         user.setTel(Long.parseLong(JOptionPane.showInputDialog(null, "Telefono")));
-        
+
         fecha.setDia(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nDia")));
         fecha.setMes(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nMes")));
         fecha.setA(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nAño")));
         user.setFecha(fecha);
-        
+
         user.setEmail(JOptionPane.showInputDialog(null, "Email"));
 
         dir.setCalle(JOptionPane.showInputDialog(null, "Direccion:\nCalle"));
@@ -289,4 +291,3 @@ class MenuTools extends Menu {
         return user;
     }
 }
-
