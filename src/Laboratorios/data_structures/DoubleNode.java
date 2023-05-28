@@ -17,7 +17,7 @@ public class DoubleNode {
         this.prev = null;
     }
 
-    public Object getData() {
+    public Object getDato() {
         return data;
     }
 

@@ -68,7 +68,7 @@ public class BandejaEntrada {
     
     public void enviarMensaje(Long destinatario) {
         Menu m = new Menu();
-        Node actual = m.listaEmpleados.First();
+        DoubleNode actual = m.listaEmpleados.First();
         msg = redactarMensaje();
         while(actual != null){
             if(((Empleado) actual.getDato()).getUser().getId() == destinatario) {

@@ -2,8 +2,9 @@
 
 public class test {
     public static void main(String[] args) {
-        MenuTools m = new MenuTools();
-        m.Import();
+        Menu m = new Menu();
+        opcList o = new opcList();
+        o.Import();
         m.menuAdmin();
         // m.menuEmpleado();
         // m.listaEmpleados.print();

@@ -78,7 +78,7 @@ public class DoubleList {
             return null;
         }
         
-        Object data = head.getData();
+        Object data = head.getDato();
         head = head.getNext();
         
         if (head != null) {
@@ -97,7 +97,7 @@ public class DoubleList {
             return null;
         }
         
-        Object data = tail.getData();
+        Object data = tail.getDato();
         tail = tail.getPrev();
         
         if (tail != null) {
@@ -178,7 +178,7 @@ public class DoubleList {
         DoubleNode actual = head;
         int index = 0;
         while (actual != null) {
-            if (actual.getData().equals(nodo.getData())) {
+            if (actual.getDato().equals(nodo.getDato())) {
                 return index;
             }
             actual = actual.getNext();
@@ -191,9 +191,15 @@ public class DoubleList {
         DoubleNode actual = head;
         StringBuilder sb = new StringBuilder();
         while (actual != null) {
-            sb.append(actual.getData().toString()).append("\n");
+            sb.append(actual.getDato().toString()).append("\n");
             actual = actual.getNext();
         }
         JOptionPane.showMessageDialog(null, sb.toString());
+    }
+    public DoubleNode First() {
+        return head;
+    }
+    public void setSize(int size) {
+        this.size = size;
     }
 }

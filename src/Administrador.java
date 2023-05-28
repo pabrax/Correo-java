@@ -1,20 +1,20 @@
-import data_structures.List;
+
 import Objects.Usuario;
 import data_structures.*;
 
 public class Administrador extends Empleado{
-    
+    opcList o;
     public Administrador() {
         this.user = new Usuario();
+        this.o = new opcList();
     }
     
     public void registrarUsuarios(){
-        MenuTools m = new MenuTools();
-        List temp = new List();
-        temp = m.getlistaEmpleados();
-        Usuario u = m.create();
+        Menu m = new Menu();
+        DoubleList temp = m.getlistaEmpleados();
+        Usuario u = o.create();
         
-        if(m.Buscar(u.getId()) == null){
+        if(o.Buscar(u.getId()) == null){
             m.listaEmpleados.addLast(u);
 
             m.setlistaEmpleados(temp);
@@ -22,8 +22,7 @@ public class Administrador extends Empleado{
     }
     // ? falta testear
     public void CambiarContrasena(Long userID, String newPwd){
-        Menu m = new Menu();
-        Node actual = m.Buscar(userID);
+        DoubleNode actual = o.Buscar(userID);
         if(actual != null){
             Usuario u = ((Empleado) actual.getDato()).user;
             u.setContrasena(newPwd);
@@ -32,16 +31,14 @@ public class Administrador extends Empleado{
         }
     }
     
-    
     public void actualizarInfo(){
-        MenuTools mt = new MenuTools();
-        mt.toFile();
+        o.toFile();
     }
 
     public Usuario eliminarUsuario(long id){
         Menu m = new Menu();
-        Node actual = m.getlistaEmpleados().First();
-        Node anterior = null;
+        DoubleNode actual = m.getlistaEmpleados().First();
+        DoubleNode anterior = null;
         while (actual != null) {
             Usuario u = (Usuario) actual.getDato();
             if (u.getId() == id) {
