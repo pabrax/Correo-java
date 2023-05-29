@@ -3,16 +3,22 @@
 
 - bandeja de entrada implementada (falta comprobar su funcionamiento)
 
-- la clase menuTools se encuentra en el Menu.java
+- la clase menuTools deja de existir y pasa a ser opcList 
 
 - se ha implementado la clase temporal test, sirve para revisar el correcto funcionamiento del programa
 
-- la listaEmpleados del Menu no opera bien con los datos (error de logica)
+- la lista empleados funciona parcialmente
 
 - se ha creado la carpeta mensajes (punto 10 del enunciado) para almacenar los mensajes (por implementar)
 
 
 ### por agregar/solucionar
+
+- cuando se crea un nuevo usuario, cuando se actualiza la informacion, se borra todo el otro contenido
+
+- en el menu: hay que cambiar la forma en la que se accede a los datos. En lugar de revisar un archivo de texto, se debe revisar por usuario
+
+- el metodo cambiarContrasena de la clase Administrador no funciona
 
 - falta organizar mejor el codigo
 
@@ -32,6 +38,10 @@
 
 
 ### correcciones
+
+- menu funcional, se ha eliminado algunos metodos innecesarios y se ha corregido el error que no validaba a los usuarios, ahora el login funciona correctamente
+
+- se ha solucionado el error a la hora de imprimir los usuarios
 
 - se ha corregido el metodo import, no validaba bien las contraseñas antes de asginarlas al usuario
 

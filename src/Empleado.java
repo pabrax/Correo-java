@@ -22,11 +22,9 @@ public class Empleado {
     public void setUser(Usuario user) {
         this.user = user;
     }
-
     public BandejaEntrada getBandeja() {
         return bandeja;
-    }
-    
+    }  
     public void setBandeja(BandejaEntrada bandeja) {
         this.bandeja = bandeja;
     }
@@ -42,5 +40,8 @@ public class Empleado {
     public void verBorradores(){
         bandeja.getBorrador().display();
     }
-    
+    @Override
+    public String toString() {
+        return getUser().toString();
+    }
 }

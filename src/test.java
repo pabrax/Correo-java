@@ -1,20 +1,24 @@
-
+import Objects.Usuario;
 
 public class test {
     public static void main(String[] args) {
-        Menu m = new Menu();
         opcList o = new opcList();
         o.Import();
-        m.menuAdmin();
-        // m.menuEmpleado();
-        // m.listaEmpleados.print();
-        
-        // System.out.println(((Empleado) listaEmpleados.First().getDato()).getUser().toString(););
-        // ((Empleado) listaEmpleados.First().getDato()).revisarBandeja();
-        // ((Empleado) listaEmpleados.First().getDato()).verMensajesLeidos();
-        // ((Empleado) listaEmpleados.First().getDato()).verBorradores();
+        ListaEmpleados listaEmpleados = o.getListaEmpleados();
+        // Menu m = new Menu(listaEmpleados);
         // m.Login();
-        // m.create();
+        Usuario user = ((Empleado) listaEmpleados.getLista().first().getDato()).getUser();
+        // Administrador a = new Administrador(listaEmpleados, user);
+        
+        
+        // a.registrarUsuarios(); // si se registra un user, cuando guarda el archivo borra su contenido
+        // listaEmpleados.getLista().print(); // ? muestra mas no en texto plano
+        // // a.eliminarUsuario(1075689);
+        // a.actualizarInfo();
+        Empleado e = new Empleado(user);
+        e.revisarBandeja();
+        e.verBorradores();
+        e.verMensajesLeidos();
 
     }
 }

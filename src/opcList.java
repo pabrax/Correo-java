@@ -6,17 +6,23 @@ import javax.swing.JOptionPane;
 
 public class opcList {
 
-    DoubleList listaEmpleados;
+    ListaEmpleados listaEmpleados;
 
+    public opcList(ListaEmpleados lista) {
+        this.listaEmpleados = lista;
+    }
     public opcList() {
-        Menu m = new Menu();
-        this.listaEmpleados = m.listaEmpleados;
+        this.listaEmpleados = new ListaEmpleados();
+    }
+
+    public ListaEmpleados getListaEmpleados() {
+        return listaEmpleados;
     }
     
     public DoubleNode Buscar(Long id) {
-        DoubleNode actual = listaEmpleados.First();
+        DoubleNode actual = listaEmpleados.getLista().first();
         while (actual != null) {
-            Usuario u = (Usuario) actual.getDato();
+            Usuario u = ((Empleado) actual.getDato()).getUser();
             if (u.getId() == id) {
                 return actual;
             }
@@ -24,15 +30,26 @@ public class opcList {
         }
         return null;
     }
+    // public DoubleNode Buscar(Long id) {
+    //     DoubleNode actual = listaEmpleados.getLista().first();
+    //     while (actual != null) {
+    //         Empleado emp = (Empleado) actual.getDato();
+    //         if (emp.getUser().getId() == id) {
+    //             return actual;
+    //         }
+    //         actual = actual.getNext();
+    //     }
+    //     return null;
+    // }
 
     public void toFile() {
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
 
-            PrintWriter writer = new PrintWriter(file);
-            DoubleNode actual = listaEmpleados.First();
+            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
-                Usuario u = (Usuario) actual.getDato();
+                Usuario u = ((Empleado) actual.getDato()).getUser();
                 writer.println(u.toString());
                 actual = actual.getNext();
             }
@@ -44,11 +61,11 @@ public class opcList {
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
 
-            PrintWriter writer = new PrintWriter(file);
-            DoubleNode actual = listaEmpleados.First();
+            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
-                Usuario u = (Usuario) actual.getDato();
-                String credenciales = (u.getId() + u.getContrasena() + u.getTipoUsuario());
+                Usuario u = ((Empleado) actual.getDato()).getUser();
+                String credenciales = (u.getId() + " " + u.getContrasena() + " " + u.getTipoUsuario());
                 writer.println(credenciales);
                 actual = actual.getNext();
             }
@@ -87,7 +104,7 @@ public class opcList {
                 usuario.setTipoUsuario(((String[]) credenciales.get(credIndex))[2]);
                 credIndex += 1;
                 Empleado e = new Empleado(usuario);
-                listaEmpleados.addLast(e);
+                listaEmpleados.getLista().addLast(e);
             }
             br.close();
             System.out.println("Se han importado los usuarios desde el archivo");
@@ -142,6 +159,11 @@ public class opcList {
         dir.setEdificio(JOptionPane.showInputDialog(null, "Direccion:\nEdificio"));
         dir.setApto(JOptionPane.showInputDialog(null, "Direccion:\nApartamento"));
         user.setDir(dir);
+
+        // credenciales
+
+        user.setContrasena(JOptionPane.showInputDialog(null, "digite la contraseña del usuario"));
+        user.setTipoUsuario("empleado");
 
         return user;
     }

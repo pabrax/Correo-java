@@ -4,51 +4,65 @@ import data_structures.*;
 
 public class Administrador extends Empleado{
     opcList o;
-    public Administrador() {
+    ListaEmpleados lista;
+
+    public Administrador(ListaEmpleados lista) {
+        this.lista = lista;
         this.user = new Usuario();
-        this.o = new opcList();
+        this.o = new opcList(lista); // por revisar
+    }
+
+    public Administrador(ListaEmpleados lista, Usuario user) {
+        this.lista = lista;
+        this.user = user;
+        this.o = new opcList(lista); // por revisar
     }
     
-    public void registrarUsuarios(){
-        Menu m = new Menu();
-        DoubleList temp = m.getlistaEmpleados();
-        Usuario u = o.create();
-        
-        if(o.Buscar(u.getId()) == null){
-            m.listaEmpleados.addLast(u);
-
-            m.setlistaEmpleados(temp);
-        }
-    }
-    // ? falta testear
-    public void CambiarContrasena(Long userID, String newPwd){
-        DoubleNode actual = o.Buscar(userID);
-        if(actual != null){
-            Usuario u = ((Empleado) actual.getDato()).user;
-            u.setContrasena(newPwd);
-        } else {
-            System.out.println("no se encontro al usuario " + userID);
-        }
+    public Administrador() {
+        this.lista = new ListaEmpleados(null);
+        this.user = new Usuario();
+        this.o = new opcList(); // por revisar
     }
     
     public void actualizarInfo(){
         o.toFile();
     }
 
+    public void registrarUsuarios(){
+        DoubleList temp = lista.getLista();
+        Usuario u = o.create();
+        
+        if(o.Buscar(u.getId()) == null){
+            temp.addLast(u);
+            lista.setLista(temp);
+        }
+    }
+    
+    // ? falta testear
+    public void CambiarContrasena(Long userID, String newPwd){
+        DoubleNode actual = o.Buscar(userID);
+        if(actual != null){
+            Usuario u = ((Empleado) actual.getDato()).getUser();
+            u.setContrasena(newPwd);
+        } else {
+            System.out.println("no se encontro al usuario " + userID);
+        }
+    }
+    
     public Usuario eliminarUsuario(long id){
-        Menu m = new Menu();
-        DoubleNode actual = m.getlistaEmpleados().First();
+
+        DoubleNode actual = lista.getLista().first();
         DoubleNode anterior = null;
         while (actual != null) {
-            Usuario u = (Usuario) actual.getDato();
+            Usuario u = ((Empleado) actual.getDato()).getUser();
             if (u.getId() == id) {
                 if (anterior == null) {
-                    m.getlistaEmpleados().removeFirst();
+                    lista.getLista().removeFirst();
                 } else if (actual.getNext() == null) {
-                    m.getlistaEmpleados().removeLast();
+                    lista.getLista().removeLast();
                 } else {
                     anterior.setNext(actual.getNext());
-                    m.getlistaEmpleados().setSize(m.getlistaEmpleados().size() - 1);
+                    lista.getLista().setSize(lista.getLista().size() - 1);
                 }
                 return u;
             }
@@ -57,5 +71,6 @@ public class Administrador extends Empleado{
         }
         return null;
     }
+    
     
 }

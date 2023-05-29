@@ -196,10 +196,8 @@ public class DoubleList {
         }
         JOptionPane.showMessageDialog(null, sb.toString());
     }
-    public DoubleNode First() {
-        return head;
-    }
-    public void setSize(int size) {
-        this.size = size;
+
+    public void setSize(int s) {
+        this.size = s;
     }
 }

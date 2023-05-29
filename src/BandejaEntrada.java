@@ -8,6 +8,7 @@ import Objects.*;
 
 public class BandejaEntrada {
 
+    private ListaEmpleados lista; 
     // colecciones de datos
     private List no_leidos;
     private List leidos;
@@ -21,6 +22,13 @@ public class BandejaEntrada {
         this.no_leidos = new List();
         this.leidos = new List();
         this.borrador = new stack();
+    }
+
+    public BandejaEntrada(ListaEmpleados lista) {
+        this.no_leidos = new List();
+        this.leidos = new List();
+        this.borrador = new stack();
+        this.lista = lista;
     }
 
     public BandejaEntrada(Usuario usuario) {
@@ -67,8 +75,8 @@ public class BandejaEntrada {
     }
     
     public void enviarMensaje(Long destinatario) {
-        Menu m = new Menu();
-        DoubleNode actual = m.listaEmpleados.First();
+        
+        DoubleNode actual = lista.getLista().first();
         msg = redactarMensaje();
         while(actual != null){
             if(((Empleado) actual.getDato()).getUser().getId() == destinatario) {
