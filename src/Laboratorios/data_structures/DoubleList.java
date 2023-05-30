@@ -1,4 +1,5 @@
 package data_structures;
+import Objects.mensaje;
 
 import javax.swing.JOptionPane;
 
@@ -199,5 +200,62 @@ public class DoubleList {
 
     public void setSize(int s) {
         this.size = s;
+    }
+
+    
+    public String obtenermensajes() {
+        DoubleNode actual = head;
+        StringBuilder sb = new StringBuilder();
+        int index = 0;
+        while (actual != null) {
+            // sb.append(actual.getDato()).append("\n");
+            sb.append(index++).append(") ").append(((mensaje) actual.getDato()).toStringShort()).append("\n");
+            actual = actual.getNext();
+        }
+        return sb.toString();
+    }
+
+    public Object get(int indice) {
+        if (indice < 0 || indice >= size) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        DoubleNode actual = head;
+        for (int i = 0; i < indice; i++) {
+            actual = actual.getNext();
+        }
+        return actual.getDato();
+    }
+
+    public Object remove(int indice) {
+        if (indice < 0 || indice >= size) {
+            throw new IndexOutOfBoundsException("Índice fuera de rango");
+        }
+        if (isEmpty()) {
+            throw new IllegalStateException("La lista está vacía");
+        }
+        DoubleNode actual = head;
+        if (indice == 0) {
+            head = actual.getNext();
+            if (head != null) {
+                head.setPrev(null);
+            }
+            size--;
+            return actual.getDato();
+        }
+        for (int i = 0; i < indice; i++) {
+            actual = actual.getNext();
+        }
+        DoubleNode anterior = actual.getPrev();
+        DoubleNode siguiente = actual.getNext();
+        
+        if (anterior != null) {
+            anterior.setNext(siguiente);
+        }
+        if (siguiente != null) {
+            siguiente.setPrev(anterior);
+        }
+        
+        size--;
+        return actual.getDato();
     }
 }

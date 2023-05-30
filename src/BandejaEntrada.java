@@ -10,8 +10,8 @@ public class BandejaEntrada {
 
     private ListaEmpleados lista; 
     // colecciones de datos
-    private List no_leidos;
-    private List leidos;
+    private DoubleList no_leidos;
+    private DoubleList leidos;
     private stack borrador;
     private mensaje msg;
 
@@ -19,31 +19,31 @@ public class BandejaEntrada {
     private Usuario user;
 
     public BandejaEntrada() {
-        this.no_leidos = new List();
-        this.leidos = new List();
+        this.no_leidos = new DoubleList();
+        this.leidos = new DoubleList();
         this.borrador = new stack();
     }
 
     public BandejaEntrada(Usuario usuario, ListaEmpleados lista) {
-        this.no_leidos = new List();
-        this.leidos = new List();
+        this.no_leidos = new DoubleList();
+        this.leidos = new DoubleList();
         this.borrador = new stack();
         this.user = usuario;
         this.lista = lista;
     }
 
     // gets y sets
-    public List getNo_leidos() {
+    public DoubleList getNo_leidos() {
         return no_leidos;
     }
-    public void setNo_leidos(List no_leidos) {
+    public void setNo_leidos(DoubleList no_leidos) {
         this.no_leidos = no_leidos;
     }
 
-    public List getLeidos() {
+    public DoubleList getLeidos() {
         return leidos;
     }
-    public void setLeidos(List leidos) {
+    public void setLeidos(DoubleList leidos) {
         this.leidos = leidos;
     }
 
@@ -52,6 +52,17 @@ public class BandejaEntrada {
     }
     public void setBorrador(stack borrador) {
         this.borrador = borrador;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setLista(ListaEmpleados lista) {
+        this.lista = lista;
     }
 
     // metodos de la clase
@@ -73,14 +84,13 @@ public class BandejaEntrada {
         DoubleNode actual = lista.getLista().first();
         while(actual != null){
             if(((Empleado) actual.getDato()).getUser().getId().equals(destinatario)) {
-                ((Empleado) actual.getDato()).getBandeja().getLeidos().addLast(msg);
+                ((Empleado) actual.getDato()).getBandeja().getNo_leidos().addLast(m);
                 return;
             }
             actual = actual.getNext();
         }
         System.out.println("usuario no encontrado");
     }
-
     
     
     private Fecha fechaActual() {

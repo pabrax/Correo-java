@@ -1,13 +1,9 @@
 
 ### not Working
 
-- bandeja de entrada: no funciona el enviar mensaje (no encuentra a ningun usuario)
-
 - bandeja de entrada implementada (falta comprobar su funcionamiento)
 
-- la clase menuTools deja de existir y pasa a ser opcList 
-
-- se ha implementado la clase temporal test, sirve para revisar el correcto funcionamiento del programa
+- cuando se actualizan los usuarios se borra la lista
 
 - la lista empleados funciona parcialmente
 
@@ -15,6 +11,8 @@
 
 
 ### TO DO
+
+- falta leer los mensajes, y decidir si enviar los borradores 
 
 - **IMPLEMENTAR LAS FUNCIONALIDADES PRINCIPALES DEL PROGRAMA (problema 2 y 3)**
 
@@ -34,6 +32,8 @@
 
 ### realized
 
+- bandeja de entrada: funciona el enviar mensaje
+
 - se ha añadido la clase ListaEmpleados que se encarga de almacenar la lista de los Usuarios registrados
 
 - las clases hospedadas en "Laboratorios" estan listas 
@@ -43,3 +43,7 @@
 - se ha solucionado el error a la hora de imprimir los usuarios
 
 - se ha organizado el codigo en el menu y el login (el recorrido se realiza por usuario y no se abre el archivo password como en versiones anteriores)
+
+- la clase menuTools deja de existir y pasa a ser opcList 
+
+- se ha implementado la clase temporal test, sirve para revisar el correcto funcionamiento del programa

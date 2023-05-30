@@ -1,4 +1,4 @@
-// import Objects.Usuario;
+
 // import Objects.mensaje;
 
 public class test {
@@ -6,15 +6,14 @@ public class test {
         opcList o = new opcList();
         o.Import();
         ListaEmpleados listaEmpleados = o.getListaEmpleados();
-        Menu m = new Menu(listaEmpleados);
-        m.Login();
-        // Usuario user = ((Empleado) listaEmpleados.getLista().first().getDato()).getUser();
-        // BandejaEntrada b = new BandejaEntrada(user, listaEmpleados);
-        // mensaje msg = b.redactarMensaje();
-        // b.enviarMensaje(msg, 34568910l);
-        // // Administrador a = new Administrador(listaEmpleados, user);
-        
-        
+        // Menu m = new Menu(listaEmpleados);
+        // m.Login();
+
+        Empleado empleado = ((Empleado) listaEmpleados.getLista().first().getDato());
+        BandejaEntrada b = empleado.getBandeja();
+           
+        b.enviarMensaje(b.redactarMensaje(), empleado.getUser().getId());
+        empleado.revisarBandeja();
         // a.registrarUsuarios(); // si se registra un user, cuando guarda el archivo borra su contenido
         // listaEmpleados.getLista().print(); // ? muestra mas no en texto plano
         // // a.eliminarUsuario(1075689);

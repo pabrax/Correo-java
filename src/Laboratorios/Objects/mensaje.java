@@ -50,8 +50,10 @@ public class mensaje {
     }
 
     public String toString() {
-        return "mensaje [titulo=" + titulo + "\n" + fechaEnvio + ", nameUser=" + nameUser + ", contenido="
-                + contenido + "]";
+        return "[ " + fechaEnvio + " ] " + titulo + "\nremitente: " + nameUser + "\n" + contenido;
+    }
+    public String toStringShort() {
+        return " [ " + fechaEnvio + " ] " + titulo + " | " + nameUser;
     }
     
     

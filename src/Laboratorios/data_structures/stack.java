@@ -27,7 +27,7 @@ public class stack {
         return data.First().getDato();
     }
 
-    public void display() {
+    public String display() {
         Node actual = data.First();
         StringBuilder sb = new StringBuilder();
         int index = 0;
@@ -35,7 +35,7 @@ public class stack {
             sb.append(index++).append(") ").append(actual.getDato()).append("\n");
             actual = actual.getNext();
         }
-        JOptionPane.showMessageDialog(null, sb.toString());
+        return sb.toString();
     }
 
 }

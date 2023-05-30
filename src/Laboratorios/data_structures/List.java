@@ -2,6 +2,8 @@ package data_structures;
 
 import javax.swing.JOptionPane;
 
+import Objects.mensaje;
+
 public class List {
     private Node head;
     private Node tail;
@@ -31,6 +33,18 @@ public class List {
             actual = actual.getNext();
         }
         JOptionPane.showMessageDialog(null, sb.toString());
+    }
+
+    public String obtenermensajes() {
+        Node actual = head;
+        StringBuilder sb = new StringBuilder();
+        int index = 0;
+        while (actual != null) {
+            // sb.append(actual.getDato()).append("\n");
+            sb.append(index++).append(") ").append(((mensaje) actual.getDato()).toStringShort()).append("\n");
+            actual = actual.getNext();
+        }
+        return sb.toString();
     }
 
     public int getIndex(Node nodo) {

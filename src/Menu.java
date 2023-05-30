@@ -7,6 +7,7 @@ public class Menu {
 
     ListaEmpleados listaEmpleados;
     Usuario user;
+    BandejaEntrada BEUser;
     
     public Menu(ListaEmpleados lista) {
         this.listaEmpleados = lista;
@@ -14,7 +15,9 @@ public class Menu {
 
     // error en el menu empleado case 1
     public void menuEmpleado() {
-        Empleado emp = new Empleado(user, listaEmpleados);
+        Empleado emp = new Empleado(this.user, listaEmpleados);
+        emp.setBandeja(BEUser);
+
         int opcion;
         do {
             String input = JOptionPane.showInputDialog(
@@ -22,13 +25,13 @@ public class Menu {
                             "2. Revisar bandeja de entrada\n" +
                             "3. Ver mensajes leídos\n" +
                             "4. Ver borradores\n" +
-                            "5. administrar\n" +
+                            "5. administrar\n" + // ! aqui hay un bug
                             "6. cerrar sesion\n" +
                             "7. Salir\n" +
                             "Seleccione una opción:");
                             
             opcion = Integer.parseInt(input);
-
+            
             switch (opcion) {
                 case 1:
                     Long idDest = Long.parseLong(JOptionPane.showInputDialog(null, "Digite el id del    destinatario"));
@@ -50,21 +53,22 @@ public class Menu {
                 case 4:
                     emp.verBorradores();
                     break;
-                case 5:
+                    case 5:
                     menuAdmin();
                     break;
-                case 6:
+                    case 6:
                     Login();
                     break;
-                case 7:
+                    case 7:
                     JOptionPane.showMessageDialog(null, "Hasta luego!");
                     break;
-                default:
+                    default:
                     JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
-            }
-        } while (opcion != 5);
-        System.exit(0);
+                }
+                emp.setBandeja(BEUser);
+            } while (opcion != 7);
+            System.exit(0);
     }
     
     public void menuAdmin() {
@@ -76,7 +80,7 @@ public class Menu {
                 "1. Registrar usuario\n" +
                             "2. Cambiar contraseña\n" +
                             "3. Eliminar usuario\n" +
-                            "4. Actualizar información usuarios\n" +
+                            "4. Actualizar información usuarios\n" + 
                             "5. Mail\n" +
                             "6. cerrar sesion\n" +
                             "7. Salir\n" +
@@ -122,7 +126,7 @@ public class Menu {
                     JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
                 }
-        } while (opcion != 5);
+        } while (opcion != 7);
         System.exit(0);
     }
     
@@ -136,9 +140,16 @@ public class Menu {
             if((((Empleado) actUser.getDato()).getUser().getId().equals(idLogin)) && ((Empleado) actUser.getDato()).getUser().getContrasena().equals(LoginPassword)){
                 if (((Empleado) actUser.getDato()).getUser().getTipoUsuario().equals("administrador")) {
                     this.user = ((Empleado)actUser.getDato()).getUser();
+                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
+                    this.BEUser.setUser(user);
+                    this.BEUser.setLista(listaEmpleados);
                     menuAdmin();
                 } else {
+                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
                     this.user = ((Empleado)actUser.getDato()).getUser();
+                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
+                    this.BEUser.setUser(user);
+                    this.BEUser.setLista(listaEmpleados);
                     menuEmpleado();
                 }
             }
