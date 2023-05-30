@@ -14,7 +14,7 @@ public class Menu {
 
     // error en el menu empleado case 1
     public void menuEmpleado() {
-        Empleado meb = new Empleado(user);
+        Empleado emp = new Empleado(user, listaEmpleados);
         int opcion;
         do {
             String input = JOptionPane.showInputDialog(
@@ -22,25 +22,41 @@ public class Menu {
                             "2. Revisar bandeja de entrada\n" +
                             "3. Ver mensajes leídos\n" +
                             "4. Ver borradores\n" +
-                            "5. Salir\n" +
+                            "5. administrar\n" +
+                            "6. cerrar sesion\n" +
+                            "7. Salir\n" +
                             "Seleccione una opción:");
                             
             opcion = Integer.parseInt(input);
 
             switch (opcion) {
                 case 1:
-                meb.bandeja.redactarMensaje();
+                    Long idDest = Long.parseLong(JOptionPane.showInputDialog(null, "Digite el id del    destinatario"));
+                    mensaje m = emp.bandeja.redactarMensaje();
+                    int  conf = Integer.parseInt(JOptionPane.showInputDialog(null, "Desea enviar el mensaje?\n1) si\n2) no"));
+                    if (conf == 1) {
+                        emp.getBandeja().enviarMensaje(m, idDest);
+                    } else {
+                        emp.getBandeja().getBorrador().push(m);
+                    }
+                
                     break;
                 case 2:
-                    meb.revisarBandeja();
+                    emp.revisarBandeja();
                     break;
                     case 3:
-                    meb.verMensajesLeidos();
+                    emp.verMensajesLeidos();
                     break;
                 case 4:
-                    meb.verBorradores();
+                    emp.verBorradores();
                     break;
                 case 5:
+                    menuAdmin();
+                    break;
+                case 6:
+                    Login();
+                    break;
+                case 7:
                     JOptionPane.showMessageDialog(null, "Hasta luego!");
                     break;
                 default:
@@ -60,8 +76,10 @@ public class Menu {
                 "1. Registrar usuario\n" +
                             "2. Cambiar contraseña\n" +
                             "3. Eliminar usuario\n" +
-                            "4. Actualizar información\n" +
-                            "5. Salir\n" +
+                            "4. Actualizar información usuarios\n" +
+                            "5. Mail\n" +
+                            "6. cerrar sesion\n" +
+                            "7. Salir\n" +
                             "Seleccione una opción:");
 
             opcion = Integer.parseInt(input);
@@ -92,6 +110,12 @@ public class Menu {
                     mab.actualizarInfo();
                     break;
                 case 5:
+                    menuEmpleado();
+                    break;
+                case 6:
+                    Login();
+                    break;
+                case 7:
                     JOptionPane.showMessageDialog(null, "Hasta luego!");
                     break;
                     default:
@@ -111,14 +135,15 @@ public class Menu {
         while (actUser != null) {
             if((((Empleado) actUser.getDato()).getUser().getId().equals(idLogin)) && ((Empleado) actUser.getDato()).getUser().getContrasena().equals(LoginPassword)){
                 if (((Empleado) actUser.getDato()).getUser().getTipoUsuario().equals("administrador")) {
+                    this.user = ((Empleado)actUser.getDato()).getUser();
                     menuAdmin();
-                    this.user = ((Empleado)actUser.getDato()).getUser();
                 } else {
-                    menuEmpleado();
                     this.user = ((Empleado)actUser.getDato()).getUser();
+                    menuEmpleado();
                 }
             }
-            actUser.getNext();
+            actUser = actUser.getNext();
         }
+        JOptionPane.showMessageDialog(null, "el usuario no existe");
     }
 }

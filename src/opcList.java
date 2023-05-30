@@ -46,7 +46,7 @@ public class opcList {
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
 
-            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            PrintWriter writer = new PrintWriter(file);
             DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
                 Usuario u = ((Empleado) actual.getDato()).getUser();
@@ -61,7 +61,7 @@ public class opcList {
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
 
-            PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+            PrintWriter writer = new PrintWriter(file);
             DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
                 Usuario u = ((Empleado) actual.getDato()).getUser();
@@ -73,7 +73,6 @@ public class opcList {
         } catch (Exception e) {
             System.out.println("Error al guardar las credenciales");
         }
-
     }
 
     public void Import() {

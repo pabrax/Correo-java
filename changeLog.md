@@ -1,6 +1,8 @@
 
 ### not Working
 
+- bandeja de entrada: no funciona el enviar mensaje (no encuentra a ningun usuario)
+
 - bandeja de entrada implementada (falta comprobar su funcionamiento)
 
 - la clase menuTools deja de existir y pasa a ser opcList 

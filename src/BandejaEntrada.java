@@ -24,18 +24,12 @@ public class BandejaEntrada {
         this.borrador = new stack();
     }
 
-    public BandejaEntrada(ListaEmpleados lista) {
-        this.no_leidos = new List();
-        this.leidos = new List();
-        this.borrador = new stack();
-        this.lista = lista;
-    }
-
-    public BandejaEntrada(Usuario usuario) {
+    public BandejaEntrada(Usuario usuario, ListaEmpleados lista) {
         this.no_leidos = new List();
         this.leidos = new List();
         this.borrador = new stack();
         this.user = usuario;
+        this.lista = lista;
     }
 
     // gets y sets
@@ -74,17 +68,12 @@ public class BandejaEntrada {
         return msg;
     }
     
-    public void enviarMensaje(Long destinatario) {
-        
+
+    public void enviarMensaje(mensaje m, Long destinatario) {
         DoubleNode actual = lista.getLista().first();
-        msg = redactarMensaje();
         while(actual != null){
-            if(((Empleado) actual.getDato()).getUser().getId() == destinatario) {
-                if(IsSend()){
-                    ((Empleado) actual.getDato()).bandeja.no_leidos.addLast(msg);
-                } else {
-                    borrador.push(msg);
-                }
+            if(((Empleado) actual.getDato()).getUser().getId().equals(destinatario)) {
+                ((Empleado) actual.getDato()).getBandeja().getLeidos().addLast(msg);
                 return;
             }
             actual = actual.getNext();
@@ -92,6 +81,16 @@ public class BandejaEntrada {
         System.out.println("usuario no encontrado");
     }
 
+    
+    
+    private Fecha fechaActual() {
+        LocalDate fechaActual = LocalDate.now();
+        String temp = fechaActual.toString();
+        String[] newFecha =temp.split("-");
+        Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
+        return f;
+    }
+    
     public void guardarMensajes() {    
         // guarda los mensajes no leidos
         try {
@@ -168,24 +167,5 @@ public class BandejaEntrada {
             System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }
     }
-
-
-
-    private Fecha fechaActual() {
-        LocalDate fechaActual = LocalDate.now();
-        String temp = fechaActual.toString();
-        String[] newFecha =temp.split("-");
-        Fecha f = new Fecha(Short.parseShort(newFecha[0]),Short.parseShort(newFecha[1]),Short.parseShort(newFecha[2]));
-        return f;
-    }
-
-    private Boolean IsSend(){
-        Boolean enviar = false;
-        int comprobacion = Integer.parseInt(JOptionPane.showInputDialog(null, "que desea hacer con el mensaje\n1) enviar mensaje\n2) salir"));
-        if (comprobacion == 1) {
-            enviar = true;
-        }
-        return enviar;
-    }
-
+    
 }

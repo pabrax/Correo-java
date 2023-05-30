@@ -70,7 +70,5 @@ public class Administrador extends Empleado{
             actual = actual.getNext();
         }
         return null;
-    }
-    
-    
+    } 
 }

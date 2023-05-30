@@ -10,9 +10,14 @@ public class Empleado {
         this.bandeja = new BandejaEntrada();
     }
 
+    public Empleado(Usuario usuario, ListaEmpleados lista) {
+        this.user = usuario;
+        this.bandeja = new BandejaEntrada(usuario, lista);
+    }
+
     public Empleado(Usuario usuario) {
         this.user = usuario;
-        this.bandeja = new BandejaEntrada(usuario);
+        this.bandeja = new BandejaEntrada();
     }
     
     // gets y sets
