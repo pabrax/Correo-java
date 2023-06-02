@@ -21,26 +21,26 @@ public class Menu {
         int opcion;
         do {
             String input;
-                System.out.println(emp.getUser().getTipoUsuario());
+                //System.out.println(emp.getUser().getTipoUsuario());
                 if(emp.getUser().getTipoUsuario().equals("administrador")){
                     input = JOptionPane.showInputDialog(
-                    "1. Redactar mensaje\n" +
-                            "2. Revisar bandeja de entrada\n" +
-                            "3. Ver mensajes leídos\n" +
-                            "4. Ver borradores\n" +
-                            "5. cerrar sesion\n" +
+                    "1. Redactar Mensaje\n" +
+                            "2. Revisar Bandeja de Entrada\n" +
+                            "3. Ver Mensajes Leídos\n" +
+                            "4. Ver Borradores\n" +
+                            "5. Cerrar Sesión\n" +
                             "6. Salir\n" +
-                            "7. administrar\n" +
-                            "Seleccione una opción:");
+                            "7. Administrar\n" +
+                            "Seleccione Una Opción:");
                 }else{
                     input = JOptionPane.showInputDialog(
-                    "1. Redactar mensaje\n" +
-                            "2. Revisar bandeja de entrada\n" +
-                            "3. Ver mensajes leídos\n" +
-                            "4. Ver borradores\n" +
-                            "5. cerrar sesion\n" +
+                    "1. Redactar Mensaje\n" +
+                            "2. Revisar Bandeja de Entrada\n" +
+                            "3. Ver Mensajes Leídos\n" +
+                            "4. Ver Borradores\n" +
+                            "5. Cerrar Sesion\n" +
                             "6. Salir\n" +
-                            "Seleccione una opción:");
+                            "Seleccione una Opción:");
                 }           
             opcion = Integer.parseInt(input);
             
@@ -70,7 +70,7 @@ public class Menu {
                     Login();
                     break;
                 case 6:
-                    JOptionPane.showMessageDialog(null, "Hasta luego!");
+                    JOptionPane.showMessageDialog(null, "Hasta Luego!");
                     emp.getBandeja().guardarMensajes();
                     break;
                 case 7:
@@ -80,7 +80,7 @@ public class Menu {
                     }
                     
                     default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida");
+                    JOptionPane.showMessageDialog(null, "Opción Inválida");
                     break;
                 }
                 emp.setBandeja(BEUser);
@@ -95,11 +95,11 @@ public class Menu {
         do {
             String input = JOptionPane.showInputDialog(
                 "1. Registrar usuario\n" +
-                            "2. Cambiar contraseña\n" +
-                            "3. Eliminar usuario\n" +
-                            "4. Actualizar información usuarios\n" + 
-                            "5. Mail\n" +
-                            "6. cerrar sesion\n" +
+                            "2. Cambiar Contraseña\n" +
+                            "3. Eliminar Usuario\n" +
+                            "4. Actualizar Información Usuarios\n" + 
+                            "5. Correo\n" +
+                            "6. Cerrar Sesión\n" +
                             "7. Salir\n" +
                             "Seleccione una opción:");
 
@@ -110,21 +110,21 @@ public class Menu {
                     mab.registrarUsuarios();
                     break;
                     case 2:
-                    String userIDInput = JOptionPane.showInputDialog("Ingrese el ID del usuario:");
+                    String userIDInput = JOptionPane.showInputDialog("Ingrese el ID del Usuario:");
                     Long userID = Long.parseLong(userIDInput);
 
-                    String newPwd = JOptionPane.showInputDialog("Ingrese la nueva contraseña:");
+                    String newPwd = JOptionPane.showInputDialog("Ingrese la Nueva Contraseña:");
                     mab.CambiarContrasena(userID, newPwd);
                     break;
                 case 3:
-                    String idInput = JOptionPane.showInputDialog("Ingrese el ID del usuario a eliminar:");
+                    String idInput = JOptionPane.showInputDialog("Ingrese el ID del Usuario a Eliminar:");
                     long id = Long.parseLong(idInput);
 
                     Usuario u = mab.eliminarUsuario(id);
                     if (u == null) {
-                        JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                        JOptionPane.showMessageDialog(null, "Usuario no Encontrado");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Usuario eliminado: " + u);
+                        JOptionPane.showMessageDialog(null, "Usuario Eliminado con Éxito: " + u);
                     }
                     break;
                 case 4:
@@ -137,10 +137,10 @@ public class Menu {
                     Login();
                     break;
                 case 7:
-                    JOptionPane.showMessageDialog(null, "Hasta luego!");
+                    JOptionPane.showMessageDialog(null, "Hasta Luego!");
                     break;
                     default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida");
+                    JOptionPane.showMessageDialog(null, "Opción Inválida");
                     break;
                 }
         } while (opcion != 7);
@@ -149,8 +149,8 @@ public class Menu {
     
     public void Login() {
 
-        Long idLogin = Long.parseLong(JOptionPane.showInputDialog(null, "Usuario", "iniciar sesion", 1));
-        String LoginPassword = JOptionPane.showInputDialog(null, "Contraseña", "iniciar sesion", 1);
+        Long idLogin = Long.parseLong(JOptionPane.showInputDialog(null, "Usuario", "Iniciar Sesión", 1));
+        String LoginPassword = JOptionPane.showInputDialog(null, "Contraseña", "Iniciar Sesión", 1);
 
         DoubleNode actUser = listaEmpleados.getLista().first(); 
         while (actUser != null) {
@@ -172,6 +172,6 @@ public class Menu {
             }
             actUser = actUser.getNext();
         }
-        JOptionPane.showMessageDialog(null, "el usuario no existe");
+        JOptionPane.showMessageDialog(null, "El Usuario no Existe");
     }
 }
