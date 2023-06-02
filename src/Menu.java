@@ -139,6 +139,8 @@ public class Menu {
                     menuEmpleado();
                     break;
                 case 7:
+                    opcList s = new opcList();
+                    s.Import();
                     Login();
                     break;
                 case 8:
