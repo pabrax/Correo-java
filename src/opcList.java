@@ -37,7 +37,7 @@ public class opcList {
             if (actual.getDato() instanceof Empleado) {
                 Empleado empleado = (Empleado) actual.getDato();
                 Usuario u = empleado.getUser();
-                if (u.getId() == id) {
+                if (u.getId().equals(id)) {
                     return actual;
                 }
             }

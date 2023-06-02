@@ -45,7 +45,7 @@ public class Menu {
             
             switch (opcion) {
                 case 1:
-                    Long idDest = Long.parseLong(JOptionPane.showInputDialog(null, "Digite el id del    destinatario"));
+                    Long idDest = Long.parseLong(JOptionPane.showInputDialog(null, "Digite el id del destinatario"));
                     mensaje m = emp.bandeja.redactarMensaje();
                     m.setDest(idDest);
                     int  conf = Integer.parseInt(JOptionPane.showInputDialog(null, "Desea enviar el mensaje?\n1) enviar\n2) guardar como borrador"));
@@ -54,7 +54,6 @@ public class Menu {
                     } else {
                         emp.getBandeja().getBorrador().push(m);
                     }
-                
                     break;
                 case 2:
                     emp.revisarBandeja();
@@ -94,14 +93,15 @@ public class Menu {
         int opcion;
         do {
             String input = JOptionPane.showInputDialog(
-                "1. Registrar usuario\n" +
-                            "2. Cambiar Contraseña\n" +
+                            "1. Registrar usuario\n" +
+                            "2. Cambiar Contraseña a Usuario\n" +
                             "3. Eliminar Usuario\n" +
-                            "4. Actualizar Información Usuarios\n" + 
-                            "5. Correo\n" +
-                            "6. Cerrar Sesión\n" +
-                            "7. Salir\n" +
-                            "Seleccione una opción:");
+                            "4. Buscar usuario\n" +
+                            "5. Actualizar Información Usuarios\n" + 
+                            "6. Correo\n" +
+                            "7. Cerrar Sesión\n" +
+                            "8. Salir\n" +
+                            "Seleccione una opción: ");
 
             opcion = Integer.parseInt(input);
 
@@ -119,7 +119,7 @@ public class Menu {
                 case 3:
                     String idInput = JOptionPane.showInputDialog("Ingrese el ID del Usuario a Eliminar:");
                     long id = Long.parseLong(idInput);
-
+                    
                     Usuario u = mab.eliminarUsuario(id);
                     if (u == null) {
                         JOptionPane.showMessageDialog(null, "Usuario no Encontrado");
@@ -127,16 +127,21 @@ public class Menu {
                         JOptionPane.showMessageDialog(null, "Usuario Eliminado con Éxito: " + u);
                     }
                     break;
-                case 4:
-                    mab.actualizarInfo();
+                    case 4:
+                    opcList o = new opcList(listaEmpleados);
+                    Long idsearch = Long.parseLong(JOptionPane.showInputDialog("Ingrese el ID del Usuario a Eliminar:"));
+                    JOptionPane.showMessageDialog(null, ((Empleado) o.Buscar(idsearch).getDato()).getUser().toString());
                     break;
                 case 5:
-                    menuEmpleado();
+                    mab.actualizarInfo();
                     break;
                 case 6:
-                    Login();
+                    menuEmpleado();
                     break;
                 case 7:
+                    Login();
+                    break;
+                case 8:
                     JOptionPane.showMessageDialog(null, "Hasta Luego!");
                     break;
                     default:

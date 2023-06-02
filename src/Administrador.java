@@ -37,7 +37,6 @@ public class Administrador extends Empleado{
         }
     }
     
-    // ? falta testear
     public void CambiarContrasena(Long userID, String newPwd){
         DoubleNode actual = o.BuscarC(userID);
         if(actual != null){
