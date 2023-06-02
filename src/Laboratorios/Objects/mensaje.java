@@ -51,10 +51,14 @@ public class mensaje {
     }
 
     public String toString() {
-        return "[ " + fechaEnvio + " ] " + titulo + "\nremitente: " + nameUser + "\n" + contenido;
+        return "Titulo: " + titulo + "\nremitente: " + nameUser + "\n" + "Contenido: " + contenido + "\n" + "Fecha: " + fechaEnvio;
     }
     public String toStringShort() {
-        return " [ " + fechaEnvio + " ] " + titulo + " | " + nameUser;
+        return  titulo + " | " + nameUser + " | " + fechaEnvio;
+    }
+
+    public String toStringFile() {
+        return titulo + " " + nameUser + " " + contenido + " " + fechaEnvio;
     }
 
     public Long getDest() {

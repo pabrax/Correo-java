@@ -118,7 +118,7 @@ public class BandejaEntrada {
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
             while (!no_leidos.isEmpty()) {
-                String elemento = no_leidos.removeLast().toString();
+                String elemento = ((mensaje) no_leidos.removeLast()).toStringFile();
                 buffer.write(elemento);
                 buffer.write("\n");
             }
@@ -142,7 +142,7 @@ public class BandejaEntrada {
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
             while (!leidos.isEmpty()) {
-                String elemento = leidos.removeLast().toString();
+                String elemento = ((mensaje) leidos.removeLast()).toStringFile();
                 buffer.write(elemento);
                 buffer.write("\n");
             }
@@ -166,7 +166,7 @@ public class BandejaEntrada {
             FileWriter escritor = new FileWriter(archivo);
             BufferedWriter buffer = new BufferedWriter(escritor);
             while (!borrador.isEmpty()) {
-                String elemento = borrador.pop().toString();
+                String elemento = ((mensaje) borrador.pop()).toStringFile();
                 buffer.write(elemento);
                 buffer.write("\n");
             }

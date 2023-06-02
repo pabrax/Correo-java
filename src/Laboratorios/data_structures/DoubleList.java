@@ -185,7 +185,7 @@ public class DoubleList {
             actual = actual.getNext();
             index++;
         }
-        return -1; // dato no encontrado
+        return -1;
     }
 
     public void print() {

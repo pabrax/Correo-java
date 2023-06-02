@@ -27,9 +27,9 @@ public class Menu {
                             "2. Revisar Bandeja de Entrada\n" +
                             "3. Ver Mensajes Leídos\n" +
                             "4. Ver Borradores\n" +
-                            "5. Cerrar Sesión\n" +
-                            "6. Salir\n" +
-                            "7. Administrar\n" +
+                            "5. Administrar\n" +
+                            "6. Cerrar Sesión\n" +
+                            "7. Salir\n" +
                             "Seleccione Una Opción:");
                 }else{
                     input = JOptionPane.showInputDialog(
@@ -65,18 +65,20 @@ public class Menu {
                     emp.verBorradores();
                     break;
                 case 5:
-                    emp.getBandeja().guardarMensajes();
-                    Login();
-                    break;
-                case 6:
-                    JOptionPane.showMessageDialog(null, "Hasta Luego!");
-                    emp.getBandeja().guardarMensajes();
-                    break;
-                case 7:
                     if(emp.getUser().getTipoUsuario().equals("administrador")){
+                        emp.getBandeja().guardarMensajes();
                         menuAdmin();
                         break;
                     }
+                case 6:
+                    emp.getBandeja().guardarMensajes();
+                    Login();
+                    break;
+                case 7:
+                    JOptionPane.showMessageDialog(null, "Hasta Luego!");
+                    emp.getBandeja().guardarMensajes();
+                    break;
+
                     
                     default:
                     JOptionPane.showMessageDialog(null, "Opción Inválida");
