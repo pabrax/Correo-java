@@ -40,10 +40,10 @@ public class Empleado {
     
     public void revisarBandeja(){
         if (bandeja.getNo_leidos().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "no hay mensajes para mostrar");
+            JOptionPane.showMessageDialog(null, "No hay Mensajes para Mostrar");
             return;
         }
-        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "seleccione un mensaje:\n-1) salir\n" + bandeja.getNo_leidos().obtenermensajes()));
+        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione un Mensaje:\n-1) Salir\n" + bandeja.getNo_leidos().obtenermensajes()));
         if (s == -1) {
             return;
         }
@@ -58,11 +58,11 @@ public class Empleado {
 
     public void verBorradores(){
         if (bandeja.getBorrador().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "no hay borradores por revisar");
+            JOptionPane.showMessageDialog(null, "No Hay Borradores por Revisar");
             return;
         }
         // bandeja.getBorrador().display();
-        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "que desea hacer con el ultimo borrador? \n1) enviar \n2) Descartar\n-1) salir\n\n" + bandeja.getBorrador().display()));
+        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Que desea hacer con el ultimo borrador? \n1) Enviar \n2) Descartar\n-1) Salir\n\n" + bandeja.getBorrador().display()));
         if (s == -1) {
             return;
         } else if (s == 1) {
@@ -71,7 +71,7 @@ public class Empleado {
         } else if (s == 2) {
             bandeja.descartarMensaje();
         } else {
-            JOptionPane.showMessageDialog(null, "parametro no valido");
+            JOptionPane.showMessageDialog(null, "Parámetro no Valido");
             verBorradores();
 
         }
