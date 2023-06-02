@@ -89,7 +89,7 @@ public class BandejaEntrada {
             }
             actual = actual.getNext();
         }
-        System.out.println("usuario no encontrado");
+        System.out.println("Usuario no Encontrado");
     }
     
     
@@ -109,9 +109,9 @@ public class BandejaEntrada {
 
             if(!archivo.getParentFile().exists()){
                 if(archivo.getParentFile().mkdirs()){
-                    System.out.println("carpeta " + user.getId() +" creada");
+                    System.out.println("Carpeta " + user.getId() +" Creada");
                 } else {
-                    System.out.println("no se ha podido crear la carpeta");
+                    System.out.println("No Se ha Podido Crear la Carpeta");
                 }
             }
             
@@ -124,7 +124,7 @@ public class BandejaEntrada {
             }
             buffer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+            System.out.println("Error al Escribir en el Archivo: " + e.getMessage());
         }
         
         // guarda los mensajes leidos
@@ -134,9 +134,9 @@ public class BandejaEntrada {
 
             if(!archivo.getParentFile().exists()){
                 if(archivo.getParentFile().mkdirs()){
-                    System.out.println("carpeta " + user.getId() +" creada");
+                    System.out.println("Carpeta " + user.getId() +" Creada");
                 } else {
-                    System.out.println("no se ha podido crear la carpeta");
+                    System.out.println("No se ha podido Crear la Carpeta");
                 }
             }
 
@@ -149,7 +149,7 @@ public class BandejaEntrada {
             }
             buffer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+            System.out.println("Error al escribir en el Archivo: " + e.getMessage());
         }
         
         // guarda los borradores
@@ -159,9 +159,9 @@ public class BandejaEntrada {
             
             if(!archivo.getParentFile().exists()){
                 if(archivo.getParentFile().mkdirs()){
-                    System.out.println("carpeta " + user.getId() +" creada");
+                    System.out.println("Carpeta " + user.getId() +" Creada");
                 } else {
-                    System.out.println("no se ha podido crear la carpeta");
+                    System.out.println("No Se ha Podido Crear la Carpeta");
                 }
             }
             
@@ -174,7 +174,7 @@ public class BandejaEntrada {
             }
             buffer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+            System.out.println("Error al Escribir en el Archivo: " + e.getMessage());
         }
     }
     
