@@ -53,16 +53,18 @@ public class Menu {
                 case 4:
                     emp.verBorradores();
                     break;
-                    case 5:
+                case 5:
                     menuAdmin();
                     break;
-                    case 6:
+                case 6:
+                    emp.getBandeja().guardarMensajes();
                     Login();
                     break;
-                    case 7:
+                case 7:
                     JOptionPane.showMessageDialog(null, "Hasta luego!");
+                    emp.getBandeja().guardarMensajes();
                     break;
-                    default:
+                default:
                     JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
                 }

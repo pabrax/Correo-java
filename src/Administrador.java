@@ -29,12 +29,10 @@ public class Administrador extends Empleado{
     }
 
     public void registrarUsuarios(){
-        DoubleList temp = lista.getLista();
         Usuario u = o.create();
         
         if(o.Buscar(u.getId()) == null){
-            temp.addLast(u);
-            lista.setLista(temp);
+            lista.getLista().addLast(u);
         }
     }
     
@@ -42,7 +40,8 @@ public class Administrador extends Empleado{
     public void CambiarContrasena(Long userID, String newPwd){
         DoubleNode actual = o.Buscar(userID);
         if(actual != null){
-            Usuario u = ((Empleado) actual.getDato()).getUser();
+            Empleado emp = ((Empleado) actual.getDato());
+            Usuario u = emp.getUser();
             u.setContrasena(newPwd);
         } else {
             System.out.println("no se encontro al usuario " + userID);

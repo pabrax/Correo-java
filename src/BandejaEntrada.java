@@ -104,7 +104,7 @@ public class BandejaEntrada {
     public void guardarMensajes() {    
         // guarda los mensajes no leidos
         try {
-            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "BA.txt");
+            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/BA.txt");
             File archivo = new File(pathfile);
 
             if(!archivo.getParentFile().exists()){
@@ -129,7 +129,7 @@ public class BandejaEntrada {
         
         // guarda los mensajes leidos
         try {
-            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "ML.txt");
+            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/ML.txt");
             File archivo = new File(pathfile);
 
             if(!archivo.getParentFile().exists()){
@@ -154,7 +154,7 @@ public class BandejaEntrada {
         
         // guarda los borradores
         try {
-            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "B.txt");
+            String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/B.txt");
             File archivo = new File(pathfile);
             
             if(!archivo.getParentFile().exists()){
