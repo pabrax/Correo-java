@@ -32,7 +32,8 @@ public class Administrador extends Empleado{
         Usuario u = o.create();
         
         if(o.Buscar(u.getId()) == null){
-            lista.getLista().addLast(u);
+            Empleado emp = new Empleado(u);
+            lista.getLista().addLast(emp);
         }
     }
     
