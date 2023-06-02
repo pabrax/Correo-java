@@ -102,7 +102,7 @@ public class BandejaEntrada {
     }
     
     public void guardarMensajes() {    
-        // guarda los mensajes no leidos
+
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/BA.txt");
             File archivo = new File(pathfile);
@@ -127,7 +127,6 @@ public class BandejaEntrada {
             System.out.println("Error al Escribir en el Archivo: " + e.getMessage());
         }
         
-        // guarda los mensajes leidos
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/ML.txt");
             File archivo = new File(pathfile);
@@ -152,7 +151,6 @@ public class BandejaEntrada {
             System.out.println("Error al escribir en el Archivo: " + e.getMessage());
         }
         
-        // guarda los borradores
         try {
             String pathfile = (System.getProperty("user.dir") + "/src/Usuarios/" + user.getId() + "/B.txt");
             File archivo = new File(pathfile);

@@ -21,10 +21,9 @@ public class Menu {
         int opcion;
         do {
             String input;
-                //System.out.println(emp.getUser().getTipoUsuario());
                 if(emp.getUser().getTipoUsuario().equals("administrador")){
                     input = JOptionPane.showInputDialog(
-                    "1. Redactar Mensaje\n" +
+                            "1. Redactar Mensaje\n" +
                             "2. Revisar Bandeja de Entrada\n" +
                             "3. Ver Mensajes Leídos\n" +
                             "4. Ver Borradores\n" +
@@ -34,7 +33,7 @@ public class Menu {
                             "Seleccione Una Opción:");
                 }else{
                     input = JOptionPane.showInputDialog(
-                    "1. Redactar Mensaje\n" +
+                            "1. Redactar Mensaje\n" +
                             "2. Revisar Bandeja de Entrada\n" +
                             "3. Ver Mensajes Leídos\n" +
                             "4. Ver Borradores\n" +
@@ -48,7 +47,8 @@ public class Menu {
                 case 1:
                     Long idDest = Long.parseLong(JOptionPane.showInputDialog(null, "Digite el id del    destinatario"));
                     mensaje m = emp.bandeja.redactarMensaje();
-                    int  conf = Integer.parseInt(JOptionPane.showInputDialog(null, "Desea enviar el mensaje?\n1) si\n2) no"));
+                    m.setDest(idDest);
+                    int  conf = Integer.parseInt(JOptionPane.showInputDialog(null, "Desea enviar el mensaje?\n1) enviar\n2) guardar como borrador"));
                     if (conf == 1) {
                         emp.getBandeja().enviarMensaje(m, idDest);
                     } else {

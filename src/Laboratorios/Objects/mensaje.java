@@ -6,6 +6,7 @@ public class mensaje {
     private Fecha fechaEnvio;
     private String nameUser;
     private String contenido;
+    private Long Dest;
     
     
     public mensaje() {
@@ -21,7 +22,7 @@ public class mensaje {
         this.nameUser = nameUser;
         this.contenido = contenido;
     }
-
+    
     public String getTitulo() {
         return titulo;
     }
@@ -54,6 +55,14 @@ public class mensaje {
     }
     public String toStringShort() {
         return " [ " + fechaEnvio + " ] " + titulo + " | " + nameUser;
+    }
+
+    public Long getDest() {
+        return Dest;
+    }
+
+    public void setDest(Long dest) {
+        Dest = dest;
     }
     
     
