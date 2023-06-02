@@ -83,10 +83,7 @@ public class opcList {
         }
     }
 
-<<<<<<< HEAD
    
-=======
->>>>>>> 3d6754d5bf0dfa4669267bca6792e1156d171c21
     public void Import() {
 
         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
