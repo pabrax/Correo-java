@@ -20,16 +20,28 @@ public class Menu {
 
         int opcion;
         do {
-            String input = JOptionPane.showInputDialog(
+            String input;
+                System.out.println(emp.getUser().getTipoUsuario());
+                if(emp.getUser().getTipoUsuario().equals("administrador")){
+                    input = JOptionPane.showInputDialog(
                     "1. Redactar mensaje\n" +
                             "2. Revisar bandeja de entrada\n" +
                             "3. Ver mensajes leídos\n" +
                             "4. Ver borradores\n" +
-                            "5. administrar\n" + // ! aqui hay un bug
-                            "6. cerrar sesion\n" +
-                            "7. Salir\n" +
+                            "5. cerrar sesion\n" +
+                            "6. Salir\n" +
+                            "7. administrar\n" +
                             "Seleccione una opción:");
-                            
+                }else{
+                    input = JOptionPane.showInputDialog(
+                    "1. Redactar mensaje\n" +
+                            "2. Revisar bandeja de entrada\n" +
+                            "3. Ver mensajes leídos\n" +
+                            "4. Ver borradores\n" +
+                            "5. cerrar sesion\n" +
+                            "6. Salir\n" +
+                            "Seleccione una opción:");
+                }           
             opcion = Integer.parseInt(input);
             
             switch (opcion) {
@@ -47,24 +59,27 @@ public class Menu {
                 case 2:
                     emp.revisarBandeja();
                     break;
-                    case 3:
+                case 3:
                     emp.verMensajesLeidos();
                     break;
                 case 4:
                     emp.verBorradores();
                     break;
                 case 5:
-                    menuAdmin();
-                    break;
-                case 6:
                     emp.getBandeja().guardarMensajes();
                     Login();
                     break;
-                case 7:
+                case 6:
                     JOptionPane.showMessageDialog(null, "Hasta luego!");
                     emp.getBandeja().guardarMensajes();
                     break;
-                default:
+                case 7:
+                    if(emp.getUser().getTipoUsuario().equals("administrador")){
+                        menuAdmin();
+                        break;
+                    }
+                    
+                    default:
                     JOptionPane.showMessageDialog(null, "Opción inválida");
                     break;
                 }
@@ -91,7 +106,7 @@ public class Menu {
             opcion = Integer.parseInt(input);
 
             switch (opcion) {
-                case 1:
+                case 1: 
                     mab.registrarUsuarios();
                     break;
                     case 2:
