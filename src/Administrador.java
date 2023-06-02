@@ -38,7 +38,7 @@ public class Administrador extends Empleado{
     
     // ? falta testear
     public void CambiarContrasena(Long userID, String newPwd){
-        DoubleNode actual = o.Buscar(userID);
+        DoubleNode actual = o.BuscarC(userID);
         if(actual != null){
             Empleado emp = ((Empleado) actual.getDato());
             Usuario u = emp.getUser();

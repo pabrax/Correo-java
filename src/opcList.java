@@ -19,17 +19,17 @@ public class opcList {
         return listaEmpleados;
     }
     
-    // public DoubleNode Buscar(Long id) {
-    //     DoubleNode actual = listaEmpleados.getLista().first();
-    //     while (actual != null) {
-    //         Usuario u = ((Empleado) actual.getDato()).getUser();
-    //         if (u.getId() == id) {
-    //             return actual;
-    //         }
-    //         actual = actual.getNext();
-    //     }
-    //     return null;
-    // }
+    public DoubleNode BuscarC(Long id) {
+        DoubleNode actual = listaEmpleados.getLista().first();
+        while (actual != null) {
+            Usuario u = ((Empleado) actual.getDato()).getUser();
+            if (u.getId().equals(id)) {
+                return actual;
+            }
+            actual = actual.getNext();
+        }
+        return null;
+    }
 
     public DoubleNode Buscar(Long id) {
         DoubleNode actual = listaEmpleados.getLista().first();
