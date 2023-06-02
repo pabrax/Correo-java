@@ -58,80 +58,80 @@ public class opcList {
     //     return null;
     // }
 
-    // public void toFile() {
-    //     try {
-    //         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
-
-    //         FileWriter fWriter = new FileWriter(file); // linea que borra la informacion
-    //         BufferedWriter writer = new BufferedWriter(fWriter);
-    //         DoubleNode actual = listaEmpleados.getLista().first();
-    //         while (actual != null) {
-    //             Usuario u = ((Empleado) actual.getDato()).getUser();
-    //             writer.write(u.toString());
-    //             writer.newLine();
-    //             actual = actual.getNext();
-    //         }
-    //         writer.close();
-    //     } catch (Exception e) {
-    //         System.out.println("Error al guardar los usuarios");
-    //     }
-
-    //     try {
-    //         File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
-
-    //         FileWriter fWriter = new FileWriter(file); // linea que borra la informacion
-    //         BufferedWriter writer = new BufferedWriter(fWriter);
-    //         DoubleNode actual = listaEmpleados.getLista().first();
-    //         while (actual != null) {
-    //             Usuario u = ((Empleado) actual.getDato()).getUser();
-    //             String credenciales = (u.getId() + " " + u.getContrasena() + " " + u.getTipoUsuario());
-    //             writer.write(credenciales);
-    //             writer.newLine();
-    //             actual = actual.getNext();
-    //         }
-    //         writer.close();
-    //     } catch (Exception e) {
-    //         System.out.println("Error al guardar las credenciales");
-    //     }
-    // }
-
     public void toFile() {
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-    
+
+            FileWriter fWriter = new FileWriter(file); // linea que borra la informacion
+            BufferedWriter writer = new BufferedWriter(fWriter);
             DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
                 Usuario u = ((Empleado) actual.getDato()).getUser();
-                String usuarioString = u.toString() + System.lineSeparator();
-                byte[] usuarioBytes = usuarioString.getBytes();
-                fileOutputStream.write(usuarioBytes);
+                writer.write(u.toString());
+                writer.newLine();
                 actual = actual.getNext();
             }
-    
-            fileOutputStream.close();
+            writer.close();
         } catch (Exception e) {
             System.out.println("Error al guardar los usuarios");
         }
-    
+
         try {
             File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-    
+
+            FileWriter fWriter = new FileWriter(file); // linea que borra la informacion
+            BufferedWriter writer = new BufferedWriter(fWriter);
             DoubleNode actual = listaEmpleados.getLista().first();
             while (actual != null) {
                 Usuario u = ((Empleado) actual.getDato()).getUser();
-                String credenciales = (u.getId() + " " + u.getContrasena() + " " + u.getTipoUsuario()) + System.lineSeparator();
-                byte[] credencialesBytes = credenciales.getBytes();
-                fileOutputStream.write(credencialesBytes);
+                String credenciales = (u.getId() + " " + u.getContrasena() + " " + u.getTipoUsuario());
+                writer.write(credenciales);
+                writer.newLine();
                 actual = actual.getNext();
             }
-    
-            fileOutputStream.close();
+            writer.close();
         } catch (Exception e) {
             System.out.println("Error al guardar las credenciales");
         }
     }
+
+    // public void toFile() {
+    //     try {
+    //         File file = new File((System.getProperty("user.dir") + "/src/Files/Empleados.txt"));
+    //         FileOutputStream fileOutputStream = new FileOutputStream(file);
+    
+    //         DoubleNode actual = listaEmpleados.getLista().first();
+    //         while (actual != null) {
+    //             Usuario u = ((Empleado) actual.getDato()).getUser();
+    //             String usuarioString = u.toString() + System.lineSeparator();
+    //             byte[] usuarioBytes = usuarioString.getBytes();
+    //             fileOutputStream.write(usuarioBytes);
+    //             actual = actual.getNext();
+    //         }
+    
+    //         fileOutputStream.close();
+    //     } catch (Exception e) {
+    //         System.out.println("Error al guardar los usuarios");
+    //     }
+    
+    //     try {
+    //         File file = new File((System.getProperty("user.dir") + "/src/Files/Password.txt"));
+    //         FileOutputStream fileOutputStream = new FileOutputStream(file);
+    
+    //         DoubleNode actual = listaEmpleados.getLista().first();
+    //         while (actual != null) {
+    //             Usuario u = ((Empleado) actual.getDato()).getUser();
+    //             String credenciales = (u.getId() + " " + u.getContrasena() + " " + u.getTipoUsuario()) + System.lineSeparator();
+    //             byte[] credencialesBytes = credenciales.getBytes();
+    //             fileOutputStream.write(credencialesBytes);
+    //             actual = actual.getNext();
+    //         }
+    
+    //         fileOutputStream.close();
+    //     } catch (Exception e) {
+    //         System.out.println("Error al guardar las credenciales");
+    //     }
+    // }
 
     public void Import() {
 
