@@ -95,12 +95,12 @@ public class Menu {
         int opcion;
         do {
             String input = JOptionPane.showInputDialog(
-                            "1. Registrar usuario\n" +
-                            "2. Cambiar Contraseña a Usuario\n" +
-                            "3. Eliminar Usuario\n" +
-                            "4. Buscar usuario\n" +
-                            "5. Actualizar Información Usuarios\n" + 
-                            "6. Correo\n" +
+                            "1. Correo\n" +
+                            "2. Registrar usuario\n" +
+                            "3. Cambiar Contraseña a Usuario\n" +
+                            "4. Eliminar Usuario\n" +
+                            "5. Buscar usuario\n" +
+                            "6. Actualizar Información Usuarios\n" + 
                             "7. Cerrar Sesión\n" +
                             "8. Salir\n" +
                             "Seleccione una opción: ");
@@ -108,17 +108,20 @@ public class Menu {
             opcion = Integer.parseInt(input);
 
             switch (opcion) {
-                case 1: 
+                case 1:
+                    menuEmpleado();
+                    break;
+                case 2: 
                     mab.registrarUsuarios();
                     break;
-                    case 2:
+                case 3:
                     String userIDInput = JOptionPane.showInputDialog("Ingrese el ID del Usuario:");
                     Long userID = Long.parseLong(userIDInput);
 
                     String newPwd = JOptionPane.showInputDialog("Ingrese la Nueva Contraseña:");
                     mab.CambiarContrasena(userID, newPwd);
                     break;
-                case 3:
+                case 4:
                     String idInput = JOptionPane.showInputDialog("Ingrese el ID del Usuario a Eliminar:");
                     long id = Long.parseLong(idInput);
                     
@@ -129,16 +132,13 @@ public class Menu {
                         JOptionPane.showMessageDialog(null, "Usuario Eliminado con Éxito: " + u);
                     }
                     break;
-                    case 4:
+                case 5:
                     opcList o = new opcList(listaEmpleados);
                     Long idsearch = Long.parseLong(JOptionPane.showInputDialog("Ingrese el ID del Usuario a Eliminar:"));
                     JOptionPane.showMessageDialog(null, ((Empleado) o.Buscar(idsearch).getDato()).getUser().toString());
                     break;
-                case 5:
-                    mab.actualizarInfo();
-                    break;
                 case 6:
-                    menuEmpleado();
+                    mab.actualizarInfo();
                     break;
                 case 7:
                     opcList s = new opcList();
@@ -148,39 +148,37 @@ public class Menu {
                 case 8:
                     JOptionPane.showMessageDialog(null, "Hasta Luego!");
                     break;
-                    default:
+                default:
                     JOptionPane.showMessageDialog(null, "Opción Inválida");
                     break;
                 }
-        } while (opcion != 7);
+        } while (opcion != 8);
         System.exit(0);
     }
     
     public void Login() {
-
         Long idLogin = Long.parseLong(JOptionPane.showInputDialog(null, "Usuario", "Iniciar Sesión", 1));
         String LoginPassword = JOptionPane.showInputDialog(null, "Contraseña", "Iniciar Sesión", 1);
-
         DoubleNode actUser = listaEmpleados.getLista().first(); 
         while (actUser != null) {
             if((((Empleado) actUser.getDato()).getUser().getId().equals(idLogin)) && ((Empleado) actUser.getDato()).getUser().getContrasena().equals(LoginPassword)){
                 if (((Empleado) actUser.getDato()).getUser().getTipoUsuario().equals("administrador")) {
-                    this.user = ((Empleado)actUser.getDato()).getUser();
-                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
-                    this.BEUser.setUser(user);
-                    this.BEUser.setLista(listaEmpleados);
+                    loginSets(actUser);
                     menuAdmin();
                 } else {
-                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
-                    this.user = ((Empleado)actUser.getDato()).getUser();
-                    this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
-                    this.BEUser.setUser(user);
-                    this.BEUser.setLista(listaEmpleados);
+                    loginSets(actUser);
                     menuEmpleado();
                 }
             }
             actUser = actUser.getNext();
         }
         JOptionPane.showMessageDialog(null, "El Usuario no Existe");
+    }
+
+    private void loginSets(DoubleNode actUser){
+        this.user = ((Empleado)actUser.getDato()).getUser();
+        this.BEUser = ((Empleado)actUser.getDato()).getBandeja();
+        this.BEUser.setUser(user);
+        this.BEUser.setLista(listaEmpleados);
     }
 }

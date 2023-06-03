@@ -4,7 +4,6 @@ public class app {
         o.Import();
         ListaEmpleados listaEmpleados = o.getListaEmpleados();
         Menu m = new Menu(listaEmpleados);
-        m.Login();
-        
+        m.Login(); 
     }
 }
