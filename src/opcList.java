@@ -61,7 +61,7 @@ public class opcList {
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println("Error al guardar los usuarios");
+            System.out.println("Error al Guardar los Usuarios");
         }
 
         try {
@@ -79,7 +79,7 @@ public class opcList {
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println("Error al guardar las credenciales");
+            System.out.println("Error al Guardar las Credenciales");
         }
     }
 
@@ -98,9 +98,9 @@ public class opcList {
                     credenciales.addLast(credentials);
                 }
                 br2.close();
-                System.out.println("Se han importado las credenciales desde el archivo");
+                System.out.println("Se han Importado las Credenciales Desde el Archivo");
             } catch (IOException e) {
-                System.out.println("Error al tratar de importar la informacion");
+                System.out.println("Error al Tratar de Importar la Información");
                 e.printStackTrace();
             }
 
@@ -115,10 +115,10 @@ public class opcList {
                 listaEmpleados.getLista().addLast(e);
             }
             br.close();
-            System.out.println("Se han importado los usuarios desde el archivo");
+            System.out.println("Se han Importado los Usuarios Desde el Archivo");
 
         } catch (IOException e) {
-            System.out.println("Error al tratar de importar la informacion");
+            System.out.println("Error al Tratar de Importar la Información");
             e.printStackTrace();
         }
     }
@@ -148,29 +148,29 @@ public class opcList {
         Usuario user = new Usuario();
         Fecha fecha = new Fecha();
         Direccion dir = new Direccion();
-        user.setnombre(JOptionPane.showInputDialog(null, "Nombre"));
-        user.setId(Long.parseLong(JOptionPane.showInputDialog(null, "ID")));
-        user.setCiudad_nacimiento(JOptionPane.showInputDialog(null, "ciudad de nacimiento"));
-        user.setTel(Long.parseLong(JOptionPane.showInputDialog(null, "Telefono")));
+        user.setnombre(JOptionPane.showInputDialog(null, "Nombre","Registro Usuario",1));
+        user.setId(Long.parseLong(JOptionPane.showInputDialog(null, "ID","Registro Usuario",1)));
+        user.setCiudad_nacimiento(JOptionPane.showInputDialog(null, "Ciudad de Nacimiento","Registro Usuario",1));
+        user.setTel(Long.parseLong(JOptionPane.showInputDialog(null, "Telefono","Registro Usuario",1)));
 
-        fecha.setDia(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nDia")));
-        fecha.setMes(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nMes")));
-        fecha.setA(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nAño")));
+        fecha.setDia(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nDia","Registro Usuario",1)));
+        fecha.setMes(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nMes","Registro Usuario",1)));
+        fecha.setA(Short.parseShort(JOptionPane.showInputDialog(null, "Fecha:\nAño","Registro Usuario",1)));
         user.setFecha(fecha);
 
-        user.setEmail(JOptionPane.showInputDialog(null, "Email"));
+        user.setEmail(JOptionPane.showInputDialog(null, "Email","Registro Usuario",1));
 
-        dir.setCalle(JOptionPane.showInputDialog(null, "Direccion:\nCalle"));
-        dir.setNomenclatura(JOptionPane.showInputDialog(null, "Direccion:\nNomenclatura"));
-        dir.setBarrio(JOptionPane.showInputDialog(null, "Direccion:\nBarrio"));
-        dir.setCiudad(JOptionPane.showInputDialog(null, "Direccion:\nCiudad"));
-        dir.setEdificio(JOptionPane.showInputDialog(null, "Direccion:\nEdificio"));
-        dir.setApto(JOptionPane.showInputDialog(null, "Direccion:\nApartamento"));
+        dir.setCalle(JOptionPane.showInputDialog(null, "Dirección:\nCalle","Registro Usuario",1));
+        dir.setNomenclatura(JOptionPane.showInputDialog(null, "Dirección:\nNomenclatura","Registro Usuario",1));
+        dir.setBarrio(JOptionPane.showInputDialog(null, "Dirección:\nBarrio","Registro Usuario",1));
+        dir.setCiudad(JOptionPane.showInputDialog(null, "Dirección:\nCiudad","Registro Usuario",1));
+        dir.setEdificio(JOptionPane.showInputDialog(null, "Dirección:\nEdificio","Registro Usuario",1));
+        dir.setApto(JOptionPane.showInputDialog(null, "Dirección:\nApartamento","Registro Usuario",1));
         user.setDir(dir);
 
         // credenciales
 
-        user.setContrasena(JOptionPane.showInputDialog(null, "digite la contraseña del usuario"));
+        user.setContrasena(JOptionPane.showInputDialog(null, "Digite la Contraseña del Usuario"));
         user.setTipoUsuario("empleado");
 
         return user;

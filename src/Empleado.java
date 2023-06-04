@@ -40,10 +40,10 @@ public class Empleado {
     
     public void revisarBandeja(){
         if (bandeja.getNo_leidos().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay Mensajes para Mostrar");
+            JOptionPane.showMessageDialog(null, "No hay Mensajes para Mostrar","Bandeja",1);
             return;
         }
-        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione un Mensaje:\n" + bandeja.getNo_leidos().obtenermensajes() + "\n-1) Salir"));
+        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione un Mensaje:\n" + bandeja.getNo_leidos().obtenermensajes() + "\n-1. Salir"));
         if (s == -1) {
             return;
         }
@@ -53,7 +53,7 @@ public class Empleado {
     
     public void verMensajesLeidos(){
         if (bandeja.getLeidos().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay Mensajes Leidos"); 
+            JOptionPane.showMessageDialog(null, "No hay Mensajes Leidos","Mensajes Leidos",1); 
             return;
         }
         bandeja.getLeidos().print();
@@ -61,10 +61,10 @@ public class Empleado {
 
     public void verBorradores(){
         if (bandeja.getBorrador().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No Hay Borradores por Revisar");
+            JOptionPane.showMessageDialog(null, "No Hay Borradores por Revisar","Borradores",1);
             return;
         }
-        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Borradores\n" + bandeja.getBorrador().top() + "\n\nQuiere enviar el ultimo borrador?\n1) Enviar \t\t2) Descartar\n0) Salir\n"));
+        int s = Integer.parseInt(JOptionPane.showInputDialog(null, "Borradores\n" + bandeja.getBorrador().top() + "\n\nQuiere Enviar el Último borrador?\n1. Enviar \t\t2. Descartar\n0. Salir\n","Borrador",1));
         if (s == 0) {
             return;
         } else if (s == 1) {

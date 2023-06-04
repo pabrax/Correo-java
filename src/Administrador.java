@@ -44,7 +44,7 @@ public class Administrador extends Empleado{
             Usuario u = emp.getUser();
             u.setContrasena(newPwd);
         } else {
-            System.out.println("no se encontro al usuario " + userID);
+            System.out.println("No Se Encontro al Usuario " + userID);
         }
     }
     

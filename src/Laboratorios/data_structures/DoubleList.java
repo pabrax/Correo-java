@@ -75,7 +75,7 @@ public class DoubleList {
 
     public Object removeFirst() {
         if (isEmpty()) {
-            System.out.println("List is empty");
+            System.out.println("Lista esta vacia");
             return null;
         }
         
@@ -94,7 +94,7 @@ public class DoubleList {
 
     public Object removeLast() {
         if (isEmpty()) {
-            System.out.println("List is empty");
+            System.out.println("Lista esta vacia");
             return null;
         }
         
@@ -195,7 +195,7 @@ public class DoubleList {
             sb.append(actual.getDato().toString()).append("\n");
             actual = actual.getNext();
         }
-        JOptionPane.showMessageDialog(null, sb.toString());
+        JOptionPane.showMessageDialog(null, sb.toString(),"Borrador",1);
     }
 
     public void setSize(int s) {

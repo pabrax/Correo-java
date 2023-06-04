@@ -148,7 +148,7 @@ public class BandejaEntrada {
             }
             buffer.close();
         } catch (IOException e) {
-            System.out.println("Error al escribir en el Archivo: " + e.getMessage());
+            System.out.println("Error al Escribir en el Archivo: " + e.getMessage());
         }
         
         try {
